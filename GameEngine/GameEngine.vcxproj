@@ -151,6 +151,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\lib\onecore\x86</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(SolutionDir)ext\SDL2-2.26.4\lib\x86\SDL2.dll" "$(TargetDir)SDL2.dll"
@@ -191,6 +192,7 @@ copy /Y "$(SolutionDir)ext\SDL2_image-2.6.3\lib\x86\SDL2_image.dll" "$(TargetDir
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\lib\onecore\x64</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(SolutionDir)ext\SDL2_image-2.6.3\lib\x64\SDL2_image.dll" "$(TargetDir)SDL2_image.dll"</Command>
@@ -229,6 +231,7 @@ copy /Y "$(SolutionDir)ext\SDL2_image-2.6.3\lib\x86\SDL2_image.dll" "$(TargetDir
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\SDL\PDP_Assignment\214-design-patterns-assignment-mj-me-ak\ext\SDL2_image-2.6.3\lib\x64;D:\SDL\PDP_Assignment\214-design-patterns-assignment-mj-me-ak\ext\SDL2_ttf-2.20.2\lib\x64</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(TargetDir)SDL2.dll" "$(SolutionDir)ext\SDL2-2.26.4\lib\x64\SDL2.dll"</Command>
