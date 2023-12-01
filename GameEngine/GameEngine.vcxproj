@@ -27,9 +27,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="input.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="input.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
