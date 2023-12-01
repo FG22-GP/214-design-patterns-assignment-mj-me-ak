@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+
+#include "Character.h"
+#include "input.h"
 #include "Window.h"
 
 
@@ -44,7 +47,7 @@ int main(int argc, char* args[])
 				case SDL_QUIT: {
 					quit = true;
 				} break;
-
+				
 					// This is an example on how to use input events:
 				case SDL_KEYDOWN: {
 					// input example: if left, then make pikachu move left
@@ -74,6 +77,12 @@ int main(int argc, char* args[])
 		{
 			pik_y++;
 		}
+
+		InputHandler inputHandler;
+		Character character;
+
+		Command* command = inputHandler.handleInput();
+		if(command) command->execute(character);
 
 		// our current game logic :)
 		if (pikachuMoveRight) {
