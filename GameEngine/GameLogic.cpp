@@ -7,8 +7,6 @@
 void GameLogic::Init()
 {
     gameObject = new GameObject();
-    gameObject->Init();
-    gameObject->Start();
     gameObject->AddComponent<Player>();
 }
 

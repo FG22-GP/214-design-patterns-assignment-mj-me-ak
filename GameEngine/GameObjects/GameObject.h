@@ -7,6 +7,8 @@ class GameObject
 {
     friend class GameLogic;
 
+    GameObject();
+
     void Init();
     void Start();
     void Update();

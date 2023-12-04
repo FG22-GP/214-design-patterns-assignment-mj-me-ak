@@ -3,6 +3,12 @@
 #include "ObjectRenderer.h"
 #include "Transform.h"
 
+GameObject::GameObject()
+{
+    Init();
+    Start();
+}
+
 void GameObject::Init()
 {
     transform = new Transform();
