@@ -3,7 +3,6 @@
 
 class GameLogic
 {
-    bool moveRight;
 public:
     GameObject* gameObject;
     void Init();

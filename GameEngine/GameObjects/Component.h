@@ -1,18 +1,20 @@
 #pragma once
 
+class GameObject;
 class ObjectRenderer;
 class Transform;
 
 class Component
 {
 public:
-    const Transform* transform;
-    const ObjectRenderer* objectRenderer;
+    GameObject* gameObject;
+    Transform* transform;
+    ObjectRenderer* objectRenderer;
 
     Component();
     virtual ~Component() = default;
 
-    void Init(Transform* transform, ObjectRenderer* objectRenderer);
+    void Init(GameObject* gameObject);
     virtual void Start();
     virtual void Update();
     virtual void End();

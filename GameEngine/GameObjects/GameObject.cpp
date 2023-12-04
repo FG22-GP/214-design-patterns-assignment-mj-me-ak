@@ -9,8 +9,8 @@ void GameObject::Init()
     objectRenderer = new ObjectRenderer();
     components = {};
 
-    transform->Init(transform, objectRenderer);
-    objectRenderer->Init(transform, objectRenderer);
+    transform->Init(this);
+    objectRenderer->Init(this);
 }
 
 void GameObject::Start()

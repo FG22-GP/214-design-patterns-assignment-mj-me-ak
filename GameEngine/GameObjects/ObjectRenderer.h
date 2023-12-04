@@ -7,5 +7,6 @@ class ObjectRenderer : public Component
     SDL_Texture* texture;
 public:
     virtual void Start() override;
+    void SetTexture(const char* imagePath);
     void Render(Window* window);
 };

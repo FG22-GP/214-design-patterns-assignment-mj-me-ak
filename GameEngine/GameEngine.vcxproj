@@ -34,6 +34,7 @@
     <ClCompile Include="GameObjects\Component.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
     <ClCompile Include="GameObjects\ObjectRenderer.cpp" />
+    <ClCompile Include="GameObjects\Player.cpp" />
     <ClCompile Include="GameObjects\Transform.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="Math\Vector.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="GameObjects\Component.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
     <ClInclude Include="GameObjects\ObjectRenderer.h" />
+    <ClInclude Include="GameObjects\Player.h" />
     <ClInclude Include="GameObjects\Transform.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="Math\Vector.h" />

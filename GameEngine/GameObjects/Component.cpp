@@ -2,16 +2,19 @@
 
 #include <cstdio>
 
+#include "GameObject.h"
+
 Component::Component()
 {
     transform = nullptr;
     objectRenderer = nullptr;
 }
 
-void Component::Init(Transform* transform, ObjectRenderer* objectRenderer)
+void Component::Init(GameObject* gameObject)
 {
-    this->transform = transform;
-    this->objectRenderer = objectRenderer;
+    this->gameObject = gameObject;
+    this->transform = gameObject->transform;
+    this->objectRenderer = gameObject->objectRenderer;
 }
 
 void Component::Start()

@@ -28,10 +28,10 @@ public:
 template <typename T, std::enable_if_t<std::is_base_of_v<Component, T>>*>
 T* GameObject::AddComponent()
 {
-    Component* component = new T();
+    T* component = new T();
     components.push_back(component);
 
-    component->Init(transform, objectRenderer);
+    component->Init(this);
     component->Start();
     
     return component;

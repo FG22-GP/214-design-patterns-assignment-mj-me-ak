@@ -6,12 +6,18 @@
 void ObjectRenderer::Start()
 {
     Component::Start();
+}
 
-    texture = TextureLoader::GetTextureFromPath("img/pikachu.png");
+void ObjectRenderer::SetTexture(const char* imagePath)
+{
+    texture = TextureLoader::GetTextureFromPath(imagePath);
 }
 
 void ObjectRenderer::Render(Window* window)
 {
+    if(texture == nullptr)
+        return;
+    
     SDL_Rect targetRectangle{
         transform->position->x,
         transform->position->y,
