@@ -1,5 +1,7 @@
 #include "Window.h"
 
+#include "TextureLoader.h"
+
 Window::Window(int width, int height)
 {
 	int imgFlags = IMG_INIT_PNG;
@@ -30,6 +32,8 @@ Window::Window(int width, int height)
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");  // make the scaled rendering look smoother.
 	SDL_RenderSetLogicalSize(renderer, width, height);
+
+	TextureLoader::window = this;
 }
 
 Window::~Window()

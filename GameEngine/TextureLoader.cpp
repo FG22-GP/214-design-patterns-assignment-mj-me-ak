@@ -1,0 +1,11 @@
+#include "TextureLoader.h"
+
+SDL_Texture* TextureLoader::GetTextureFromPath(const char* path)
+{
+    return window->GetTextureFromPath(path);
+}
+
+SDL_Texture* TextureLoader::GetTextureFromFont(const char* fontPath, int fontSize)
+{
+    return window->GetTextureFromFont(fontPath, fontSize);
+}
