@@ -5,6 +5,7 @@ class GameLogic
 {
 public:
     GameObject* gameObject;
+    GameObject* inputGameObject;
     void Init();
     void Update();
     void End();

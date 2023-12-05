@@ -46,7 +46,7 @@ T* GameObject::GetComponent()
     {
         if (typeid(*(*it)) == typeid(T))
         {
-            return *it;
+            return static_cast<T*>(*it);
         }
     }
 

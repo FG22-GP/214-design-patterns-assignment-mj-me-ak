@@ -27,10 +27,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Character.cpp" />
-    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameObjects\CommandManager.cpp" />
     <ClCompile Include="GameObjects\Component.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
     <ClCompile Include="GameObjects\ObjectRenderer.cpp" />
@@ -43,9 +42,8 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h" />
-    <ClInclude Include="Controller.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameObjects\CommandManager.h" />
     <ClInclude Include="GameObjects\Component.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
     <ClInclude Include="GameObjects\ObjectRenderer.h" />

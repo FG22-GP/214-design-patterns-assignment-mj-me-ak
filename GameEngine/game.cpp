@@ -6,7 +6,6 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-#include "Character.h"
 #include "GameLogic.h"
 #include "input.h"
 #include "Window.h"

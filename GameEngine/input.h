@@ -1,16 +1,14 @@
 #pragma once
-#include <cstdio>
-#include <memory>
-#include "Character.h"
-#include <map>
 
+#include "GameObjects/GameObject.h"
+#include "GameObjects/Transform.h"
 
 
 class Command
 {
 public:
     virtual ~Command() {}
-    virtual void execute(Character& character) = 0;
+    virtual void execute(GameObject* character) = 0;
     //virtual InputType get_input_type() = 0;
     //typedef std::shared_ptr<Character> CharacterPtr;
 };
@@ -19,24 +17,47 @@ public:
 class MoveLeft : public Command 
 {
 public:
-    void execute(Character& character) { character.Left(); }
+    void execute(GameObject* gameObject)
+    {
+        gameObject->transform->position->x -= 0.1f;
+    }
 };
 class MoveRight : public Command
 {
-    void execute(Character& character) { printf("Right"); }
+    void execute(GameObject* gameObject)
+    {
+        gameObject->transform->position->x += 0.1f;
+    }
+};
+class MoveUp : public Command
+{
+    void execute(GameObject* gameObject)
+    {
+        gameObject->transform->position->y += 0.1f;
+    }
+};
+class MoveDown : public Command
+{
+    void execute(GameObject* gameObject)
+    {
+        gameObject->transform->position->y -= 0.1f;
+    }
 };
 class Punch : public Command
 {
-    void execute(Character& character) { printf("Punch"); }
+    void execute(GameObject* gameObject)
+    {
+        
+    }
 };
 
 class InputHandler
-{
-
-    
+{    
     //int MAX_ACTION_INDEX;
-    Command* buttonLeft_;
-    Command* buttonRight_;
+    Command* buttonLeft;
+    Command* buttonRight;
+    Command* buttonUp;
+    Command* buttonDown;
     Command* buttonNumPad1_;
 
     //std::map <int, Command*> commands;
