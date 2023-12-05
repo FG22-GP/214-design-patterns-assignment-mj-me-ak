@@ -25,10 +25,10 @@ InputHandler::~InputHandler()
 Command* InputHandler::handleInput()
 {
     const Uint8* keystate = SDL_GetKeyboardState(NULL);
-    if (keystate[SDL_SCANCODE_A]) return buttonLeft;
-    if (keystate[SDL_SCANCODE_D]) return buttonRight;
-    if (keystate[SDL_SCANCODE_W]) return buttonUp;
-    if (keystate[SDL_SCANCODE_S]) return buttonDown;
+    if (keystate[SDL_SCANCODE_A] || keystate[SDL_SCANCODE_LEFT]) return buttonLeft;
+    if (keystate[SDL_SCANCODE_D] || keystate[SDL_SCANCODE_RIGHT]) return buttonRight;
+    if (keystate[SDL_SCANCODE_W] || keystate[SDL_SCANCODE_UP]) return buttonUp;
+    if (keystate[SDL_SCANCODE_S] || keystate[SDL_SCANCODE_DOWN]) return buttonDown;
     return nullptr;
     
 }

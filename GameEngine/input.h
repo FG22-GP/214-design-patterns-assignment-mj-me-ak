@@ -9,8 +9,6 @@ class Command
 public:
     virtual ~Command() {}
     virtual void execute(GameObject* character) = 0;
-    //virtual InputType get_input_type() = 0;
-    //typedef std::shared_ptr<Character> CharacterPtr;
 };
 
 //Actions
