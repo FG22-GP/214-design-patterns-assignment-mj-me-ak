@@ -1,5 +1,7 @@
 #include "Player.h"
 
+#include <complex>
+
 #include "GameObject.h"
 #include "ObjectRenderer.h"
 #include "Transform.h"
@@ -10,20 +12,14 @@ void Player::Start()
 
     objectRenderer->SetTexture("img/pikachu.png");
     transform->position->y = 0;
-    transform->scale->x = 5;
-    transform->scale->y = 5;
+    transform->scale->x = 3;
+    transform->scale->y = 3;
 }
 
 void Player::Update()
 {
     Component::Update();
 
-    if (moveRight) {
-        transform->position->x += 0.1f;
-        if (transform->position->x > 19) moveRight = false;
-    }
-    else {
-        transform->position->x -= 0.1f;
-        if (transform->position->x < -19) moveRight = true;
-    }
+    transform->position->x = std::cos(SDL_GetTicks() / 500.f) * 2;
+    transform->position->y = std::sin(SDL_GetTicks() / 500.f) * 2;
 }
