@@ -19,7 +19,7 @@ void Component::Init(GameObject* gameObject)
 
 void Component::Start()
 {
-    printf("ComponentStart \n");
+    
 }
 
 void Component::Update()

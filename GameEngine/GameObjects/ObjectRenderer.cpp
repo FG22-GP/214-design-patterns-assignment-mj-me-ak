@@ -2,6 +2,7 @@
 
 #include "Transform.h"
 #include "../TextureLoader.h"
+#include "../Math/VectorInt.h"
 
 void ObjectRenderer::Start()
 {
@@ -17,12 +18,14 @@ void ObjectRenderer::Render(Window* window)
 {
     if(texture == nullptr)
         return;
-    
+
+    const VectorInt transformScreenPos = transform->WorldToScreenPos();
+    const VectorInt transformScreenScale = transform->WorldToScreenScale();
     SDL_Rect targetRectangle{
-        transform->position->x,
-        transform->position->y,
-        200,
-        200
+        transformScreenPos.x - transformScreenScale.x / 2,
+        transformScreenPos.y - transformScreenScale.y / 2,
+        transformScreenScale.x,
+        transformScreenScale.y
     };
     window->CopyTextureToRenderer(texture, NULL, &targetRectangle);
 }

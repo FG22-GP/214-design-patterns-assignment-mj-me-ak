@@ -4,8 +4,8 @@
 class Vector
 {
 public:
-    int x;
-    int y;
+    float x;
+    float y;
 
     Vector()
     {
@@ -13,7 +13,7 @@ public:
         y = 0;
     }
     
-    Vector(int x, int y) : x(x), y(y)
+    Vector(float x, float y) : x(x), y(y)
     {
     }
 

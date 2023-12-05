@@ -15,8 +15,8 @@
 const Uint32 MS_PER_UPDATE = 16;
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 1024;
-const int SCREEN_HEIGHT = 768;
+const int SCREEN_WIDTH = 1600;
+const int SCREEN_HEIGHT = 800;
 
 const char* pikachuImagePath{ "img/pikachu.png" };
 

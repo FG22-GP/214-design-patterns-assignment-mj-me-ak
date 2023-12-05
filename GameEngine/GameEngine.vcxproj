@@ -38,6 +38,7 @@
     <ClCompile Include="GameObjects\Transform.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="Math\Vector.cpp" />
+    <ClCompile Include="Math\VectorInt.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -51,7 +52,9 @@
     <ClInclude Include="GameObjects\Player.h" />
     <ClInclude Include="GameObjects\Transform.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="Math\Math.h" />
     <ClInclude Include="Math\Vector.h" />
+    <ClInclude Include="Math\VectorInt.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

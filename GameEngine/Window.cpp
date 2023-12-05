@@ -32,6 +32,8 @@ Window::Window(int width, int height)
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");  // make the scaled rendering look smoother.
 	SDL_RenderSetLogicalSize(renderer, width, height);
+	ScreenWidth = width;
+	ScreenHeight = height;
 
 	TextureLoader::window = this;
 }
@@ -44,8 +46,11 @@ Window::~Window()
 
 void Window::clear()
 {
-	SDL_SetRenderDrawColor(renderer, 120, 60, 255, 255);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+	SDL_SetRenderDrawColor(renderer, 120, 60, 255, 255);
+	const SDL_Rect rect(0, 0, ScreenWidth, ScreenHeight);
+	SDL_RenderFillRect(renderer, &rect);
 }
 
 void Window::present()

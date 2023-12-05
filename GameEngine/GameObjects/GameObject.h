@@ -57,11 +57,11 @@ template <typename T, std::enable_if_t<std::is_base_of_v<Component, T>>*>
 void GameObject::RemoveComponent(T* component)
 {
     // remove if it contains
-    for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
+    for (auto it = components.begin(); it != components.end(); ++it)
     {
         if (*it == component)
         {
-            it = components.erase(it);
+            components.erase(it);
             (*it)->End();
             delete (*it);
             break;
