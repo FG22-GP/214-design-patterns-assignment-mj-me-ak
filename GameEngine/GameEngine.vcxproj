@@ -46,6 +46,7 @@
     <ClInclude Include="GameObjects\CommandManager.h" />
     <ClInclude Include="GameObjects\Component.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
+    <ClInclude Include="GameObjects\InputScheme.h" />
     <ClInclude Include="GameObjects\ObjectRenderer.h" />
     <ClInclude Include="GameObjects\Player.h" />
     <ClInclude Include="GameObjects\Transform.h" />

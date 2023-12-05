@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameObjects/GameObject.h"
+#include "GameObjects/InputScheme.h"
 #include "GameObjects/Transform.h"
 
 
@@ -58,12 +59,16 @@ class InputHandler
     Command* buttonDown;
     Command* buttonNumPad1_;
 
+    InputScheme* inputScheme;
+
+    
+
     //std::map <int, Command*> commands;
     //std::array<Command*, MAX_ACTION_INDEX> commands; //c++11 array
     
 public:
-    Command* handleInput();
-    InputHandler();
+    std::vector<Command*> handleInput();
+    InputHandler(InputScheme inputScheme);
     ~InputHandler();
 
     //void bind(int key, CommandPtr command);
