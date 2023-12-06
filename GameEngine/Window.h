@@ -25,6 +25,7 @@ public:
 	void CopyTextureToRenderer(SDL_Texture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect);
 
 	SDL_Texture* GetTextureFromPath(const char* path);
+	SDL_Texture* GetTextureFromSurface(SDL_Surface* surface);
 	SDL_Texture* GetTextureFromFont(const char* fontPath, int fontSize);
 };
 

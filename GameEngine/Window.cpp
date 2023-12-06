@@ -66,28 +66,7 @@ void Window::CopyTextureToRenderer(SDL_Texture* texture, SDL_Rect* srcRect, SDL_
 SDL_Texture* Window::GetTextureFromPath(const char* path)
 {
 	SDL_Surface* loadedSurface = IMG_Load(path);
-	SDL_Texture* texture = NULL;
-
-	if (loadedSurface == NULL)
-	{
-		printf("Unable to load image %s! SDL_image Error: %s\n", path, IMG_GetError());
-		return nullptr;
-	}
-	else
-	{
-		//Convert surface to screen format
-		texture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-		if (texture == NULL)
-		{
-			printf("Unable to create texture from %s! SDL Error: %s\n", path, SDL_GetError());
-			return nullptr;
-		}
-
-		//Get rid of old loaded surface
-		SDL_FreeSurface(loadedSurface);
-		return texture;
-	}
-	return nullptr;
+	return GetTextureFromSurface(loadedSurface);
 }
 
 SDL_Texture* Window::GetTextureFromFont(const char* fontPath, int fontSize)
@@ -101,35 +80,29 @@ SDL_Texture* Window::GetTextureFromFont(const char* fontPath, int fontSize)
 		return nullptr;
 	}
 
-	// create text from font
 	SDL_Color textColor = { 0xff, 0xff, 0xff };
-
-	// render the text into an unoptimized CPU surface
 	SDL_Surface* textSurface = TTF_RenderText_Solid(font, "The lazy fox, blah blah", textColor);
-	int textWidth, textHeight;
-	if (textSurface == NULL)
+	return GetTextureFromSurface(textSurface);
+}
+
+SDL_Texture* Window::GetTextureFromSurface(SDL_Surface* surface)
+{
+	SDL_Texture* texture = NULL;
+
+	if (surface == NULL)
 	{
-		printf("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
+		printf("Unable to load image");
 		return nullptr;
 	}
-	else
+	//Convert surface to screen format
+	texture = SDL_CreateTextureFromSurface(renderer, surface);
+	if (texture == NULL)
 	{
-		// Create texture GPU-stored texture from surface pixels
-		textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-		if (textTexture == NULL)
-		{
-			printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
-			return nullptr;
-		}
-		// Get image dimensions
-		auto width = textSurface->w;
-		auto height = textSurface->h;
-		textWidth = textSurface->w;
-		textHeight = textSurface->h;
-		//Get rid of old loaded surface
-		SDL_FreeSurface(textSurface);
-
-		return textTexture;
+		printf("Unable to create texture");
+		return nullptr;
 	}
-	return nullptr;
+
+	//Get rid of old loaded surface
+	SDL_FreeSurface(surface);
+	return texture;
 }

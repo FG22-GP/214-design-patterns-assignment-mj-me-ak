@@ -11,7 +11,38 @@ void ObjectRenderer::Start()
 
 void ObjectRenderer::SetTexture(const char* imagePath)
 {
-    texture = TextureLoader::GetTextureFromPath(imagePath);
+    SDL_Surface* loadedSurface = IMG_Load(imagePath);
+
+    cellWidth = loadedSurface->w;
+    cellHeight = loadedSurface->h;
+    currentColumnIndex = 0;
+    currentRowIndex = 0;
+    
+    texture = TextureLoader::GetTextureFromSurface(loadedSurface);
+    
+    isSpriteSheet = false;
+}
+
+void ObjectRenderer::SetSpriteSheet(const char* imagePath, int columnCount, int rowCount)
+{
+    SDL_Surface* loadedSurface = IMG_Load(imagePath);
+
+    this->columnCount = columnCount;
+    this->rowCount = rowCount;
+    cellWidth = loadedSurface->w / columnCount;
+    cellHeight = loadedSurface->h / rowCount;
+    currentColumnIndex = 0;
+    currentRowIndex = 0;
+    
+    texture = TextureLoader::GetTextureFromSurface(loadedSurface);
+
+    isSpriteSheet = true;
+}
+
+void ObjectRenderer::SetSpriteSheetIndex(int columnIndex, int rowIndex)
+{
+    currentColumnIndex = columnIndex;
+    currentRowIndex = rowIndex;
 }
 
 void ObjectRenderer::Render(Window* window)
@@ -19,13 +50,26 @@ void ObjectRenderer::Render(Window* window)
     if(texture == nullptr)
         return;
 
+    
+    SDL_Rect destinationRectangle = GetDestinationRect();
+    SDL_Rect sourceRectangle = GetSourceRect();
+    window->CopyTextureToRenderer(texture, &sourceRectangle, &destinationRectangle);
+}
+
+SDL_Rect ObjectRenderer::GetSourceRect()
+{
+    return SDL_Rect(currentColumnIndex * cellWidth, currentRowIndex * cellHeight,
+                    cellWidth, cellHeight);
+}
+
+SDL_Rect ObjectRenderer::GetDestinationRect()
+{
     const VectorInt transformScreenPos = transform->WorldToScreenPos();
     const VectorInt transformScreenScale = transform->WorldToScreenScale();
-    SDL_Rect targetRectangle{
+    return SDL_Rect{
         transformScreenPos.x - transformScreenScale.x / 2,
         transformScreenPos.y - transformScreenScale.y / 2,
         transformScreenScale.x,
         transformScreenScale.y
     };
-    window->CopyTextureToRenderer(texture, NULL, &targetRectangle);
 }
