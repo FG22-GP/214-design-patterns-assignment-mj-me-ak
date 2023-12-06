@@ -2,6 +2,7 @@
 
 #include "ObjectRenderer.h"
 #include "Transform.h"
+#include "../GameLogic.h"
 
 GameObject::GameObject()
 {
@@ -17,6 +18,8 @@ void GameObject::Init()
 
     transform->Init(this);
     objectRenderer->Init(this);
+
+    GameLogic::RegisterGameObject(this);
 }
 
 void GameObject::Start()
@@ -37,6 +40,8 @@ void GameObject::Update()
 
 void GameObject::End()
 {
+    GameLogic::UnregisterGameObject(this);
+    
     transform->End();
     objectRenderer->End();
 

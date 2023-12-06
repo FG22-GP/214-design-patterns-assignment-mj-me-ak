@@ -61,7 +61,10 @@ int main(int argc, char* args[])
 
 		// render
 		window.clear();
-		gameLogic.gameObject->objectRenderer->Render(&window);
+		for (auto gameObject : GameLogic::GameObjects)
+		{
+			gameObject->objectRenderer->Render(&window);			
+		}
 		window.present();
 	}
 	gameLogic.End();
