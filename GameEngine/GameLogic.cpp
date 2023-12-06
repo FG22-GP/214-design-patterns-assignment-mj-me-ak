@@ -27,11 +27,19 @@ void GameLogic::Init()
     playerGameObject2->objectRenderer->SetTexture("img/charmander.png");
 }
 
-void GameLogic::Update()
+void GameLogic::Update(float deltaTime)
 {
     for (auto gameObject : GameObjects)
     {
-        gameObject->Update();
+        gameObject->Update(deltaTime);
+    }
+}
+
+void GameLogic::FixedUpdate()
+{
+    for (auto gameObject : GameObjects)
+    {
+        gameObject->FixedUpdate();
     }
 }
 

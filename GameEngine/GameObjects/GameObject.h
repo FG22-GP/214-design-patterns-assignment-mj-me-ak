@@ -11,7 +11,8 @@ class GameObject
 
     void Init();
     void Start();
-    void Update();
+    void Update(float deltaTime);
+    void FixedUpdate();
     void End();
 
     std::vector<Component*> components;

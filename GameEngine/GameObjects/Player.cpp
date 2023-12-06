@@ -15,9 +15,9 @@ void Player::Start()
     transform->scale->y = 3;
 }
 
-void Player::Update()
+void Player::FixedUpdate()
 {
-    Component::Update();
+    Component::FixedUpdate();
 
     //transform->position->x = std::cos(SDL_GetTicks() / 500.f) * 2;
     //transform->position->y = std::sin(SDL_GetTicks() / 500.f) * 2;

@@ -13,9 +13,9 @@ void CommandManager::Start()
     inputHandler2 = new InputHandler(new InputScheme(SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT));
 }
 
-void CommandManager::Update()
+void CommandManager::FixedUpdate()
 {
-    Component::Update();
+    Component::FixedUpdate();
 
     std::vector<Command*> commandsForPlayer1 = inputHandler1->handleInput();
     for (auto command : commandsForPlayer1)

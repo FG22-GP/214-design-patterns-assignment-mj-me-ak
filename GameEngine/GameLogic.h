@@ -11,7 +11,8 @@ public:
     GameLogic();
     
     void Init();
-    void Update();
+    void Update(float deltaTime);
+    void FixedUpdate();
     void End();
 
     static GameObject* Instantiate();

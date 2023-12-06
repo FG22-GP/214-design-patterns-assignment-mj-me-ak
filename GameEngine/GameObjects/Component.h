@@ -17,7 +17,8 @@ public:
     void Init(GameObject* gameObject);
     virtual void Awake();
     virtual void Start();
-    virtual void Update();
+    virtual void Update(float deltaTime);
+    virtual void FixedUpdate();
     virtual void LateUpdate();
     virtual void End();
 };

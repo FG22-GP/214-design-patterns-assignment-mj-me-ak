@@ -31,13 +31,24 @@ void GameObject::Start()
     objectRenderer->Start();
 }
 
-void GameObject::Update()
+void GameObject::Update(float deltaTime)
 {
-    transform->Update();
-    objectRenderer->Update();
+    transform->Update(deltaTime);
+    objectRenderer->Update(deltaTime);
     for (Component* component : components)
     {
-        component->Update();
+        component->Update(deltaTime);
+        component->Update(deltaTime);
+    }
+}
+
+void GameObject::FixedUpdate()
+{
+    transform->FixedUpdate();
+    objectRenderer->FixedUpdate();
+    for (Component* component : components)
+    {
+        component->FixedUpdate();
         component->LateUpdate();
     }
 }

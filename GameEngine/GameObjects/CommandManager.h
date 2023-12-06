@@ -14,6 +14,6 @@ public:
     GameObject* player2;
     
     virtual void Start() override;
-    virtual void Update() override;
+    virtual void FixedUpdate() override;
     virtual void End() override;
 };
