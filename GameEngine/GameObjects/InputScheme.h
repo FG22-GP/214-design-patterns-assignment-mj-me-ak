@@ -11,7 +11,6 @@ public:
     {
         
     }
-
     int up;
     int down;
     int left;

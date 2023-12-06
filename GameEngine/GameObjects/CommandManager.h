@@ -6,10 +6,12 @@ class Player;
 
 class CommandManager : public Component
 {
-    InputHandler* inputHandler;
+    InputHandler* inputHandler1;
+    InputHandler* inputHandler2;
     
 public:
-    GameObject* player;
+    GameObject* player1;
+    GameObject* player2;
     
     virtual void Start() override;
     virtual void Update() override;

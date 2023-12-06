@@ -2,6 +2,7 @@
 
 #include "GameObjects/CommandManager.h"
 #include "GameObjects/GameObject.h"
+#include "GameObjects/ObjectRenderer.h"
 #include "GameObjects/Player.h"
 #include "GameObjects/Transform.h"
 
@@ -12,12 +13,16 @@ GameLogic::GameLogic()
 
 void GameLogic::Init()
 {
-    auto gameObject = new GameObject();
-    gameObject->AddComponent<Player>();
+    auto playerGameObject1 = new GameObject();
+    auto playerGameObject2 = new GameObject();
+    playerGameObject1->AddComponent<Player>();
+    playerGameObject2->AddComponent<Player>();
 
     auto inputGameObject = new GameObject();
     auto commandManager = inputGameObject->AddComponent<CommandManager>();
-    commandManager->player = gameObject;
+    commandManager->player1 = playerGameObject1;
+    commandManager->player2 = playerGameObject2;
+    playerGameObject2->objectRenderer->SetTexture("img/charmander.png");
 }
 
 void GameLogic::Update()

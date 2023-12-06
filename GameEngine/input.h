@@ -52,7 +52,6 @@ class Punch : public Command
 
 class InputHandler
 {    
-    //int MAX_ACTION_INDEX;
     Command* buttonLeft;
     Command* buttonRight;
     Command* buttonUp;
@@ -60,18 +59,15 @@ class InputHandler
     Command* buttonNumPad1_;
 
     InputScheme* inputScheme;
-
     
-
     //std::map <int, Command*> commands;
     //std::array<Command*, MAX_ACTION_INDEX> commands; //c++11 array
     
 public:
     std::vector<Command*> handleInput();
-    InputHandler(InputScheme inputScheme);
+    InputHandler(InputScheme* inputScheme);
     ~InputHandler();
-
-    //void bind(int key, CommandPtr command);
     
+    //void bind(int key, CommandPtr command);
 };
 
