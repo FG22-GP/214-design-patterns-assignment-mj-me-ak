@@ -14,9 +14,9 @@ public:
     void Update();
     void End();
 
-    static GameObject* Instansiate();
-    static GameObject* Instansiate(Vector position);
-    static GameObject* Instansiate(Vector position, Vector scale);
+    static GameObject* instantiate();
+    static GameObject* instantiate(Vector position);
+    static GameObject* instantiate(Vector position, Vector scale);
     static void Destroy(GameObject* gameObject);
     static void RegisterGameObject(GameObject* gameObject);
     static void UnregisterGameObject(GameObject* gameObject);

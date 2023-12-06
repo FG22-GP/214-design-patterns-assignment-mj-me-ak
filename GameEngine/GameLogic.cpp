@@ -37,13 +37,13 @@ void GameLogic::End()
     }
 }
 
-GameObject* GameLogic::Instansiate()
+GameObject* GameLogic::instantiate()
 {
     auto gameObject = new GameObject();
     return gameObject;
 }
 
-GameObject* GameLogic::Instansiate(Vector position)
+GameObject* GameLogic::instantiate(Vector position)
 {
     auto gameObject = new GameObject();
     gameObject->transform->position->x = position.x;
@@ -51,7 +51,7 @@ GameObject* GameLogic::Instansiate(Vector position)
     return gameObject;
 }
 
-GameObject* GameLogic::Instansiate(Vector position, Vector scale)
+GameObject* GameLogic::instantiate(Vector position, Vector scale)
 {
     auto gameObject = new GameObject();
     gameObject->transform->position->x = position.x;
