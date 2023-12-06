@@ -13,8 +13,10 @@ GameLogic::GameLogic()
 
 void GameLogic::Init()
 {
-    auto playerGameObject1 = new GameObject();
-    auto playerGameObject2 = new GameObject();
+    Vector player1Pos = Vector(-10, -6);
+    Vector player2Pos = Vector(10, -6);
+    auto playerGameObject1 = Instantiate(player1Pos);
+    auto playerGameObject2 = Instantiate(player2Pos);
     playerGameObject1->AddComponent<Player>();
     playerGameObject2->AddComponent<Player>();
 
@@ -42,27 +44,24 @@ void GameLogic::End()
     }
 }
 
-GameObject* GameLogic::instantiate()
+GameObject* GameLogic::Instantiate()
 {
     auto gameObject = new GameObject();
     return gameObject;
 }
 
-GameObject* GameLogic::instantiate(Vector position)
+GameObject* GameLogic::Instantiate(Vector& position)
 {
     auto gameObject = new GameObject();
-    gameObject->transform->position->x = position.x;
-    gameObject->transform->position->y = position.y;
+    gameObject->transform->position = std::make_shared<Vector>(position);
     return gameObject;
 }
 
-GameObject* GameLogic::instantiate(Vector position, Vector scale)
+GameObject* GameLogic::Instantiate(Vector& position, Vector& scale)
 {
     auto gameObject = new GameObject();
-    gameObject->transform->position->x = position.x;
-    gameObject->transform->position->y = position.y;
-    gameObject->transform->scale->x = scale.x;
-    gameObject->transform->scale->y = scale.y;
+    gameObject->transform->position = std::make_shared<Vector>(position);
+    gameObject->transform->scale = std::make_shared<Vector>(scale);
     return gameObject;
 }
 

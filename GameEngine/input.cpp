@@ -12,8 +12,8 @@ InputHandler::InputHandler(InputScheme* inputScheme)
         
     buttonLeft = new MoveLeft();
     buttonRight = new MoveRight();
-    buttonUp = new MoveUp();
-    buttonDown = new MoveDown();
+    buttonUp = new Jump();
+    buttonDown = new Crouch();
     
 }
 

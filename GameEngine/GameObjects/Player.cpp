@@ -11,7 +11,6 @@ void Player::Start()
     Component::Start();
 
     objectRenderer->SetTexture("img/pikachu.png");
-    transform->position->y = 0;
     transform->scale->x = 3;
     transform->scale->y = 3;
 }

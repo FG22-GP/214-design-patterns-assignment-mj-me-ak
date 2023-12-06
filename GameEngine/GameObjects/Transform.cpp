@@ -7,16 +7,13 @@
 
 Transform::Transform()
 {
-    position = new Vector();
-    scale = new Vector(1, 1);
+    position = std::make_shared<Vector>(0, 0);
+    scale = std::make_shared<Vector>(1, 1);
 }
 
 void Transform::End()
 {
     Component::End();
-
-    delete position;
-    delete scale;
 }
 
 VectorInt Transform::WorldToScreenPos()

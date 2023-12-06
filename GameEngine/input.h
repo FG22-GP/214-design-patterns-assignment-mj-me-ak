@@ -50,6 +50,22 @@ class Punch : public Command
     }
 };
 
+class Jump : public Command
+{
+    void execute(GameObject* gameObject)
+    {
+        
+    }
+};
+
+class Crouch : public Command
+{
+    void execute(GameObject* gameObject)
+    {
+        
+    }
+};
+
 class InputHandler
 {    
     Command* buttonLeft;
