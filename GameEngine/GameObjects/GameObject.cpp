@@ -20,6 +20,9 @@ void GameObject::Init()
     objectRenderer->Init(this);
 
     GameLogic::RegisterGameObject(this);
+
+    transform->Awake();
+    objectRenderer->Awake();
 }
 
 void GameObject::Start()
@@ -35,6 +38,7 @@ void GameObject::Update()
     for (Component* component : components)
     {
         component->Update();
+        component->LateUpdate();
     }
 }
 

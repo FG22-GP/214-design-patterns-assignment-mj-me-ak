@@ -17,12 +17,22 @@ void Component::Init(GameObject* gameObject)
     this->objectRenderer = gameObject->objectRenderer;
 }
 
+void Component::Awake()
+{
+    
+}
+
 void Component::Start()
 {
     
 }
 
 void Component::Update()
+{
+    
+}
+
+void Component::LateUpdate()
 {
     
 }

@@ -34,6 +34,7 @@ T* GameObject::AddComponent()
     components.push_back(component);
 
     component->Init(this);
+    component->Awake();
     component->Start();
     
     return component;
