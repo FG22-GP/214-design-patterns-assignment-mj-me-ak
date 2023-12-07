@@ -44,12 +44,10 @@ T* GameObject::AddComponent()
 template <typename T, std::enable_if_t<std::is_base_of_v<Component, T>>*>
 T* GameObject::GetComponent()
 {
-    for (std::vector<Component*>::iterator it = components.begin(); it != components.end(); ++it)
+    for (auto component : components)
     {
-        if (typeid(*(*it)) == typeid(T))
-        {
-            return static_cast<T*>(*it);
-        }
+        if(typeid(*component) == typeid(T))
+            return static_cast<T*>(component);
     }
 
     return nullptr;
