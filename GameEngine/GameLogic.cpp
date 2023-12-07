@@ -1,5 +1,6 @@
 #include "GameLogic.h"
 
+#include "Animator.h"
 #include "GameObjects/CommandManager.h"
 #include "GameObjects/GameObject.h"
 #include "GameObjects/ObjectRenderer.h"
@@ -17,6 +18,8 @@ void GameLogic::Init()
     Vector player2Pos = Vector(10, -6);
     auto playerGameObject1 = Instantiate(player1Pos);
     auto playerGameObject2 = Instantiate(player2Pos);
+    playerGameObject1->AddComponent<Animator>();
+    playerGameObject2->AddComponent<Animator>();
     playerGameObject1->AddComponent<Player>();
     playerGameObject2->AddComponent<Player>();
 
@@ -24,7 +27,7 @@ void GameLogic::Init()
     auto commandManager = inputGameObject->AddComponent<CommandManager>();
     commandManager->player1 = playerGameObject1;
     commandManager->player2 = playerGameObject2;
-    playerGameObject2->objectRenderer->SetTexture("img/charmander.png");
+    // playerGameObject2->objectRenderer->SetTexture("img/charmander.png");
 }
 
 void GameLogic::Update(float deltaTime)

@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Observer.h"
+#include "../Event.h"
 #include "../GameObjects/Component.h"
 
 class Subject : Component
@@ -10,7 +11,7 @@ private:
     std::vector<Observer*> observers;
 
 protected:
-    void Notify(const GameObject& gameObject);
+    void Notify(const GameObject& gameObject, Event event);
     
 public:
     void AddObserver(Observer* observer);

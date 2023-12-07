@@ -38,7 +38,7 @@ void GameObject::Update(float deltaTime)
     for (Component* component : components)
     {
         component->Update(deltaTime);
-        component->Update(deltaTime);
+        component->LateUpdate();
     }
 }
 
@@ -49,7 +49,6 @@ void GameObject::FixedUpdate()
     for (Component* component : components)
     {
         component->FixedUpdate();
-        component->LateUpdate();
     }
 }
 

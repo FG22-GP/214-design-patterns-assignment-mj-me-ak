@@ -52,14 +52,15 @@ int main(int argc, char* args[])
 			}
 		}
 
-		gameLogic.Update(static_cast<float>(elapsed) / 1000.f);
-
 		// update game logic
 		while (lag >= MS_PER_UPDATE)
 		{
 			gameLogic.FixedUpdate();
 			lag -= MS_PER_UPDATE;
 		}
+
+		gameLogic.Update(static_cast<float>(elapsed) / 1000.f);
+
 
 		// render
 		window.clear();

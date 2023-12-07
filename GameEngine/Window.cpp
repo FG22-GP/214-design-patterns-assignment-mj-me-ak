@@ -30,7 +30,7 @@ Window::Window(int width, int height)
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 	}
 
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");  // make the scaled rendering look smoother.
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");  // make the scaled rendering look smoother.
 	SDL_RenderSetLogicalSize(renderer, width, height);
 	ScreenWidth = width;
 	ScreenHeight = height;

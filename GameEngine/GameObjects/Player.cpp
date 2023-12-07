@@ -1,19 +1,24 @@
 #include "Player.h"
 
-#include <complex>
-#include <iostream>
+// #include <complex>
+// #include <iostream>
 
 #include "GameObject.h"
 #include "ObjectRenderer.h"
 #include "Transform.h"
+#include "../Animator.h"
+
+class Animator;
 
 void Player::Start()
 {
     Component::Start();
 
-    objectRenderer->SetTexture("img/pikachu.png");
+    objectRenderer->SetSpriteSheet("img/AnimationSheet.png", 8, 2);
     transform->scale->x = 3;
     transform->scale->y = 3;
+    Animator* animator = gameObject->GetComponent<Animator>();
+    animator->OnNotify(*gameObject, StartWalk);
 }
 
 void Player::FixedUpdate()

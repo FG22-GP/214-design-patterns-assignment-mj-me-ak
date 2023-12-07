@@ -1,10 +1,10 @@
 #include "Subject.h"
 
-void Subject::Notify(const GameObject& gameObject)
+void Subject::Notify(const GameObject& gameObject, Event event)
 {
     for (int i = 0; i < observers.size(); i++)
     {
-        observers[i]->OnNotify(gameObject);
+        observers[i]->OnNotify(gameObject, event);
     }
 }
 

@@ -1,8 +1,19 @@
 #pragma once
+#include <map>
+
+#include "Animation.h"
 #include "Events/Observer.h"
 
-class Animator : Observer
+class Animator : public Component, Observer 
 {
+private:
+    std::map<AnimationName ,Animation*> animations; 
+
+    Animation* currentAnimation;
+    float currentAnimationTime;
+    
 public:
-    void OnNotify(const GameObject&) override;
+    Animator();
+    void OnNotify(const GameObject& gameObject, Event event) override;
+    void Update(float deltaTime) override;
 };
