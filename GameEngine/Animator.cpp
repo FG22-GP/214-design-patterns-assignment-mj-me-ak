@@ -5,6 +5,9 @@
 Animator::Animator()
 {
     currentAnimationTime = 0.0f;
+
+    Animation* idleAnimation = new Animation {Idle, 1, 1, false, {Keyframe{0.0f, 0}}};
+    
     Animation* walkAnimation = new Animation {Walk, 8, 0.8f, true,
         {Keyframe{0.0f, 0},
             Keyframe{0.1f, 1},
@@ -15,10 +18,9 @@ Animator::Animator()
         Keyframe{0.6f, 6},
         Keyframe{0.7f, 7}}};
 
-    Animation* idleAnimation = new Animation {Idle, 1, 1, false, {Keyframe{0.0f, 0}}};
     
-    animations[Walk] = walkAnimation;
     animations[Idle] = idleAnimation;
+    animations[Walk] = walkAnimation;
 }
 
 void Animator::OnNotify(const GameObject& gameObject, Event event)

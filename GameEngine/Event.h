@@ -2,6 +2,6 @@
 
 enum Event
 {
-    StartWalk,
-    StartIdle
+    StartIdle,
+    StartWalk
 };

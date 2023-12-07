@@ -2,6 +2,6 @@
 
 enum AnimationName
 {
-    Walk,
-    Idle
+    Idle,
+    Walk
 };
