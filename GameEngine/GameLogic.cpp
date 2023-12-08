@@ -27,7 +27,9 @@ void GameLogic::Init()
     auto commandManager = inputGameObject->AddComponent<CommandManager>();
     commandManager->player1 = playerGameObject1;
     commandManager->player2 = playerGameObject2;
-    // playerGameObject2->objectRenderer->SetTexture("img/charmander.png");
+    
+    playerGameObject1->objectRenderer->SetTextureColor(153, 229, 80);
+    playerGameObject2->objectRenderer->SetTextureColor(229, 153, 80);
 }
 
 void GameLogic::Update(float deltaTime)

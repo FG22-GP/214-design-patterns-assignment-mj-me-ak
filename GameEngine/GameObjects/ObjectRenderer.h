@@ -18,6 +18,7 @@ class ObjectRenderer : public Component
 public:
     virtual void Start() override;
     void SetTexture(const char* imagePath);
+    void SetTextureColor(Uint8 r, Uint8 g, Uint8 b);
     void SetSpriteSheet(const char* imagePath, int columnCount, int rowCount = 1);
     void SetSpriteSheetIndex(int columnIndex, int rowIndex = 0);
     void Render(Window* window);
