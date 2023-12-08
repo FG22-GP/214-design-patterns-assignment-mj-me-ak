@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <SDL_stdinc.h>
 
 #include "GameObjects/GameObject.h"
@@ -15,38 +16,21 @@ public:
     virtual void execute(GameObject* character) = 0;
 };
 
-//Actions
-class MoveLeft : public Command 
+class Move : public Command 
 {
+    int direction;
 public:
+    Move(int direction) : direction(direction)
+    {        
+    }
+    
     void execute(GameObject* gameObject)
     {
         auto player = gameObject->GetComponent<Player>();
-        player->MoveLeft();
+        player->Move(direction);
     }
 };
-class MoveRight : public Command
-{
-    void execute(GameObject* gameObject)
-    {
-        auto player = gameObject->GetComponent<Player>();
-        player->MoveRight();
-    }
-};
-class MoveUp : public Command
-{
-    void execute(GameObject* gameObject)
-    {
-        gameObject->transform->position->y += 0.1f;
-    }
-};
-class MoveDown : public Command
-{
-    void execute(GameObject* gameObject)
-    {
-        gameObject->transform->position->y -= 0.1f;
-    }
-};
+
 class Punch : public Command
 {
     void execute(GameObject* gameObject)
@@ -77,11 +61,15 @@ class InputHandler
     Command* buttonRightPress;
     Command* buttonUpPress;
     Command* buttonDownPress;
+    Command* buttonLeftRelease;
+    Command* buttonRightRelease;
+    Command* buttonUpRelease;
+    Command* buttonDownRelease;
     Command* buttonNumPad1_;
 
     InputScheme* inputScheme;
 
-    const Uint8* previousKeyState;
+    std::map<int, bool> previousKeyState;
     
     //std::map <int, Command*> commands;
     //std::array<Command*, MAX_ACTION_INDEX> commands; //c++11 array

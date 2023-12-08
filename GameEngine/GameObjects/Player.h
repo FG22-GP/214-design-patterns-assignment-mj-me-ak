@@ -10,6 +10,5 @@ public:
     virtual void Start() override;
     virtual void FixedUpdate() override;
 
-    void MoveRight();        
-    void MoveLeft();        
+    void Move(int direction);
 };

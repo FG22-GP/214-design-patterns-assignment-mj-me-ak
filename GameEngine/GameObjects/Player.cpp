@@ -28,12 +28,7 @@ void Player::FixedUpdate()
     transform->position->x += horizontalSpeed * moveSpeed;
 }
 
-void Player::MoveRight()
+void Player::Move(int direction)
 {
-    horizontalSpeed = 1;
-}
-
-void Player::MoveLeft()
-{
-    horizontalSpeed = -1;
+    horizontalSpeed += direction;
 }

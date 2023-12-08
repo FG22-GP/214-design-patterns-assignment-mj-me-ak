@@ -15,6 +15,5 @@ public:
     
     virtual void Start() override;
     virtual void Update(float deltaTime) override;
-    virtual void FixedUpdate() override;
     virtual void End() override;
 };

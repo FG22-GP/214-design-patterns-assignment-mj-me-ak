@@ -29,11 +29,6 @@ void CommandManager::Update(float deltaTime)
     }
 }
 
-void CommandManager::FixedUpdate()
-{
-    Component::FixedUpdate();
-}
-
 void CommandManager::End()
 {
     Component::End();
