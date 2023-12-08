@@ -11,9 +11,9 @@ InputHandler::InputHandler(InputScheme* inputScheme)
     this->inputScheme = inputScheme; //&inputScheme turns into ptr , inputScheme& then its reference?
         
     buttonLeftPress = new Move(-1);
-    buttonLeftRelease = new Move(1);
+    buttonLeftRelease = new Move(0);
     buttonRightPress = new Move(1);
-    buttonRightRelease = new Move(-1);
+    buttonRightRelease = new Move(0);
     buttonUpPress = new Jump();
     buttonDownPress = new Crouch(true);
     buttonDownRelease = new Crouch(false);

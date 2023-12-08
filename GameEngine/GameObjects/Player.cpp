@@ -29,10 +29,14 @@ void Player::FixedUpdate()
     transform->position->x += horizontalSpeed * moveSpeed;
 }
 
-void Player::Move(int direction)
+void Player::Move(float direction)
 {
     if (isCrouching) return;
-    horizontalSpeed += direction;
+
+    float towards = direction - horizontalSpeed;
+    if(std::abs(towards) > 0.01f)
+        towards /= std::abs(towards);
+    horizontalSpeed += towards;
 
     if (std::abs(horizontalSpeed) < 0.1f && isMoving)
     {

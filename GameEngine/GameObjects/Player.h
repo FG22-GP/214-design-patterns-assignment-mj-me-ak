@@ -13,6 +13,6 @@ public:
     virtual void Start() override;
     virtual void FixedUpdate() override;
 
-    void Move(int direction);
+    void Move(float direction);
     void Crouch(bool isCrouching);
 };
