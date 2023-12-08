@@ -13,9 +13,9 @@ void CommandManager::Start()
     inputHandler2 = new InputHandler(new InputScheme(SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT));
 }
 
-void CommandManager::FixedUpdate()
+void CommandManager::Update(float deltaTime)
 {
-    Component::FixedUpdate();
+    Component::Update(deltaTime);
 
     std::vector<Command*> commandsForPlayer1 = inputHandler1->handleInput();
     for (auto command : commandsForPlayer1)
@@ -27,6 +27,11 @@ void CommandManager::FixedUpdate()
     {
         command->execute(player2);
     }
+}
+
+void CommandManager::FixedUpdate()
+{
+    Component::FixedUpdate();
 }
 
 void CommandManager::End()

@@ -25,6 +25,16 @@ void Player::FixedUpdate()
 {
     Component::FixedUpdate();
 
-    //transform->position->x = std::cos(SDL_GetTicks() / 500.f) * 2;
-    //transform->position->y = std::sin(SDL_GetTicks() / 500.f) * 2;
+    transform->position->x += horizontalSpeed * moveSpeed;
+}
+
+void Player::MoveRight()
+{
+    horizontalSpeed += 1;
+    printf("sss");
+}
+
+void Player::MoveLeft()
+{
+    horizontalSpeed -= 1;
 }

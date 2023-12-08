@@ -1,7 +1,10 @@
 #pragma once
 
+#include <SDL_stdinc.h>
+
 #include "GameObjects/GameObject.h"
 #include "GameObjects/InputScheme.h"
+#include "GameObjects/Player.h"
 #include "GameObjects/Transform.h"
 
 
@@ -18,14 +21,16 @@ class MoveLeft : public Command
 public:
     void execute(GameObject* gameObject)
     {
-        gameObject->transform->position->x -= 0.1f;
+        auto player = gameObject->GetComponent<Player>();
+        player->MoveLeft();
     }
 };
 class MoveRight : public Command
 {
     void execute(GameObject* gameObject)
     {
-        gameObject->transform->position->x += 0.1f;
+        auto player = gameObject->GetComponent<Player>();
+        player->MoveRight();
     }
 };
 class MoveUp : public Command
@@ -68,13 +73,15 @@ class Crouch : public Command
 
 class InputHandler
 {    
-    Command* buttonLeft;
-    Command* buttonRight;
-    Command* buttonUp;
-    Command* buttonDown;
+    Command* buttonLeftPress;
+    Command* buttonRightPress;
+    Command* buttonUpPress;
+    Command* buttonDownPress;
     Command* buttonNumPad1_;
 
     InputScheme* inputScheme;
+
+    const Uint8* previousKeyState;
     
     //std::map <int, Command*> commands;
     //std::array<Command*, MAX_ACTION_INDEX> commands; //c++11 array
