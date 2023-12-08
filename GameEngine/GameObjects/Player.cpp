@@ -31,4 +31,16 @@ void Player::FixedUpdate()
 void Player::Move(int direction)
 {
     horizontalSpeed += direction;
+    
+    if(std::abs(horizontalSpeed) < 0.1f && isMoving)
+    {
+        // player has stopped moving
+        isMoving = false;
+    }
+    
+    if(std::abs(horizontalSpeed) >= 0.1f && !isMoving)
+    {
+        // player has started moving
+        isMoving = true;
+    }
 }
