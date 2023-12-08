@@ -73,7 +73,10 @@ SDL_Rect ObjectRenderer::GetSourceRect()
 SDL_Rect ObjectRenderer::GetDestinationRect()
 {
     const VectorInt transformScreenPos = transform->WorldToScreenPos();
-    const VectorInt transformScreenScale = transform->WorldToScreenScale();
+    VectorInt transformScreenScale = transform->WorldToScreenScale();
+
+    transformScreenScale.y = static_cast<int>(static_cast<float>(transformScreenScale.y) * (static_cast<float>(cellHeight) / static_cast<float>(cellWidth))); 
+    
     return SDL_Rect{
         transformScreenPos.x - transformScreenScale.x / 2,
         transformScreenPos.y - transformScreenScale.y / 2,
