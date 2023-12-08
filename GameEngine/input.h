@@ -49,9 +49,15 @@ class Jump : public Command
 
 class Crouch : public Command
 {
-    void execute(GameObject* gameObject)
+    bool isCrouching;
+public:
+    Crouch(bool isCrouching) : isCrouching(isCrouching)
     {
         
+    }
+    void execute(GameObject* gameObject)
+    {
+        gameObject->GetComponent<Player>()->Crouch(isCrouching);
     }
 };
 

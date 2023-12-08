@@ -9,11 +9,11 @@ class Animator : public Component, public Observer
 private:
     std::map<AnimationName ,Animation*> animations; 
 
-    Animation* currentAnimation;
     float currentAnimationTime;
     
 public:
     Animator();
+    Animation* currentAnimation;
     void OnNotify(const GameObject& gameObject, Event event) override;
     void Update(float deltaTime) override;
 };

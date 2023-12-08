@@ -15,7 +15,8 @@ InputHandler::InputHandler(InputScheme* inputScheme)
     buttonRightPress = new Move(1);
     buttonRightRelease = new Move(-1);
     buttonUpPress = new Jump();
-    buttonDownPress = new Crouch();
+    buttonDownPress = new Crouch(true);
+    buttonDownRelease = new Crouch(false);
     previousKeyState = {};
 }
 
@@ -39,7 +40,8 @@ InputHandler::~InputHandler()
     if (keystate[inputScheme->right] && !previousKeyState[inputScheme->right]) commands.push_back(buttonRightPress);
     if (!keystate[inputScheme->right] && previousKeyState[inputScheme->right]) commands.push_back(buttonRightRelease);
     if (keystate[inputScheme->up] && previousKeyState[inputScheme->up]) commands.push_back(buttonUpPress);
-    if (keystate[inputScheme->down] && previousKeyState[inputScheme->down]) commands.push_back(buttonDownPress);
+    if (keystate[inputScheme->down] && !previousKeyState[inputScheme->down]) commands.push_back(buttonDownPress);
+    if (!keystate[inputScheme->down] && previousKeyState[inputScheme->down]) commands.push_back(buttonDownRelease);
 
     previousKeyState[inputScheme->left] = keystate[inputScheme->left] == 1;
     previousKeyState[inputScheme->right] = keystate[inputScheme->right] == 1;

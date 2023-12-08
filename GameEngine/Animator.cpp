@@ -18,9 +18,12 @@ Animator::Animator()
         Keyframe{0.6f, 6},
         Keyframe{0.7f, 7}}};
 
+    Animation* crouchAnimation = new Animation {Crouch, 1, 1, false, {Keyframe{0.0f, 0}}};
+
     
     animations[Idle] = idleAnimation;
     animations[Walk] = walkAnimation;
+    animations[Crouch] = crouchAnimation;
 }
 
 void Animator::OnNotify(const GameObject& gameObject, Event event)
@@ -34,7 +37,10 @@ void Animator::OnNotify(const GameObject& gameObject, Event event)
             break;
         case StartIdle:
             currentAnimation = animations[Idle];
-        break;
+            break;
+        case StartCrouch:
+            currentAnimation = animations[Crouch];
+            break;
     }
 }
 
