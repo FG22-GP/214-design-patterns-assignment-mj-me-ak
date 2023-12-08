@@ -5,7 +5,7 @@
 #include "../Event.h"
 #include "../GameObjects/Component.h"
 
-class Subject : Component
+class Subject
 {
 private:
     std::vector<Observer*> observers;

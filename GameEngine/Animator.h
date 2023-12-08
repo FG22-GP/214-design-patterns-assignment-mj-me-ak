@@ -4,7 +4,7 @@
 #include "Animation.h"
 #include "Events/Observer.h"
 
-class Animator : public Component, Observer 
+class Animator : public Component, public Observer 
 {
 private:
     std::map<AnimationName ,Animation*> animations; 

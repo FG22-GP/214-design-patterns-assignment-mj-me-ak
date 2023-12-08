@@ -18,7 +18,8 @@ void Player::Start()
     transform->scale->x = 3;
     transform->scale->y = 3;
     Animator* animator = gameObject->GetComponent<Animator>();
-    animator->OnNotify(*gameObject, StartWalk);
+    AddObserver(animator);
+    Notify(*gameObject, StartIdle);
 }
 
 void Player::FixedUpdate()
@@ -31,16 +32,17 @@ void Player::FixedUpdate()
 void Player::Move(int direction)
 {
     horizontalSpeed += direction;
-    
     if(std::abs(horizontalSpeed) < 0.1f && isMoving)
     {
         // player has stopped moving
         isMoving = false;
+        Notify(*gameObject, StartIdle);
     }
     
     if(std::abs(horizontalSpeed) >= 0.1f && !isMoving)
     {
         // player has started moving
+        Notify(*gameObject, StartWalk);
         isMoving = true;
     }
 }

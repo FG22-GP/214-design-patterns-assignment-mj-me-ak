@@ -1,7 +1,8 @@
 #pragma once
 #include "Component.h"
+#include "../Events/Subject.h"
 
-class Player : public Component
+class Player : public Component, Subject
 {
     float horizontalSpeed = 0;
     bool isMoving;
