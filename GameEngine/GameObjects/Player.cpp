@@ -30,11 +30,10 @@ void Player::FixedUpdate()
 
 void Player::MoveRight()
 {
-    horizontalSpeed += 1;
-    printf("sss");
+    horizontalSpeed = 1;
 }
 
 void Player::MoveLeft()
 {
-    horizontalSpeed -= 1;
+    horizontalSpeed = -1;
 }

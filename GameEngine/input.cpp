@@ -33,18 +33,18 @@ InputHandler::~InputHandler()
     std::vector<Command*> commands = { };
     
     const Uint8* keystate = SDL_GetKeyboardState(NULL);
-    if (keystate[inputScheme->left] == 0 && previousKeyState[inputScheme->left] == 1)
+    if (keystate[inputScheme->left])
     {
-        printf("ssseee");
+        
         commands.push_back(buttonLeftPress);
     }
-    if (keystate[inputScheme->right] && previousKeyState[inputScheme->right]) commands.push_back(buttonRightPress);
-    if (keystate[inputScheme->up] && previousKeyState[inputScheme->up]) commands.push_back(buttonUpPress);
-    if (keystate[inputScheme->down] && previousKeyState[inputScheme->down]) commands.push_back(buttonDownPress);
+    if (keystate[inputScheme->right]) commands.push_back(buttonRightPress);
+    if (keystate[inputScheme->up]) commands.push_back(buttonUpPress);
+    if (keystate[inputScheme->down]) commands.push_back(buttonDownPress);
 
-    delete previousKeyState;
-    auto state = *keystate;
-    previousKeyState = &state;
+    //delete previousKeyState;
+    //auto state = *keystate;
+    //previousKeyState = &state;
     
     return commands;
 }
