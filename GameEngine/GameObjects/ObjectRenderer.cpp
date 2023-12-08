@@ -23,6 +23,14 @@ void ObjectRenderer::SetTexture(const char* imagePath)
     isSpriteSheet = false;
 }
 
+void ObjectRenderer::SetTextureColor(Uint8 r, Uint8 g, Uint8 b)
+{
+    if(texture == nullptr)
+        return;
+
+    SDL_SetTextureColorMod(texture, r, g, b);
+}
+
 void ObjectRenderer::SetSpriteSheet(const char* imagePath, int columnCount, int rowCount)
 {
     SDL_Surface* loadedSurface = IMG_Load(imagePath);
