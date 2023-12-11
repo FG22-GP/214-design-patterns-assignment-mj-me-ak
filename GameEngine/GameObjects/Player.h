@@ -5,6 +5,7 @@
 class Player : public Component, Subject
 {
     float horizontalSpeed = 0;
+    float speedMultiplier = 1;
     bool isMoving;
     bool isCrouching;
 public:

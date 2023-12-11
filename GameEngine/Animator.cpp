@@ -33,7 +33,6 @@ void Animator::OnNotify(const GameObject& gameObject, Event event)
     {
         case StartWalk:
             currentAnimation = animations[Walk];
-            printf("Set to walk");
             break;
         case StartIdle:
             currentAnimation = animations[Idle];

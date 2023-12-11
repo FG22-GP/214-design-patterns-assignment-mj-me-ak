@@ -26,13 +26,11 @@ void Player::FixedUpdate()
 {
     Component::FixedUpdate();
 
-    transform->position->x += horizontalSpeed * moveSpeed;
+    transform->position->x += (horizontalSpeed * speedMultiplier) * moveSpeed;
 }
 
 void Player::Move(float direction)
 {
-    if (isCrouching) return;
-
     float towards = direction - horizontalSpeed;
     if(std::abs(towards) > 0.01f)
         towards /= std::abs(towards);
@@ -42,14 +40,16 @@ void Player::Move(float direction)
     {
         // player has stopped moving
         isMoving = false;
-        Notify(*gameObject, StartIdle);
+        if(!isCrouching)
+            Notify(*gameObject, StartIdle);
     }
 
     if (std::abs(horizontalSpeed) >= 0.1f && !isMoving)
     {
         // player has started moving
-        Notify(*gameObject, StartWalk);
         isMoving = true;
+        if(!isCrouching)
+            Notify(*gameObject, StartWalk);
     }
 }
 
@@ -58,12 +58,12 @@ void Player::Crouch(bool isCrouching)
     this->isCrouching = isCrouching;
     if (isCrouching)
     {
+        speedMultiplier = 0;
         Notify(*gameObject, StartCrouch);
     }
     else
     {
-        Notify(*gameObject, StartIdle);
+        speedMultiplier = 1;
+        Notify(*gameObject, isMoving ? StartWalk : StartIdle);
     }
-    horizontalSpeed = 0;
-    isMoving = false;
 }
