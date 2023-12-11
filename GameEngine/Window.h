@@ -10,9 +10,9 @@ class Window
 	SDL_Window* window{};
 	SDL_Surface* screenSurface{};
 	bool success;
-	SDL_Renderer* renderer;
 
 public:
+	SDL_Renderer* renderer;
 	inline static int ScreenWidth;
 	inline static int ScreenHeight;
 	

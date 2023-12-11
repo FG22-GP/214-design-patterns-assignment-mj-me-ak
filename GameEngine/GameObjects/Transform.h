@@ -17,4 +17,5 @@ public:
 
     VectorInt WorldToScreenPos();
     VectorInt WorldToScreenScale();
+    VectorInt WorldToScreen(Vector position);
 };

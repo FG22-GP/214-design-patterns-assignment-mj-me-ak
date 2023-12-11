@@ -176,6 +176,7 @@
     </ClCompile>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameObjects\Collider.cpp" />
     <ClCompile Include="GameObjects\CommandManager.cpp" />
     <ClCompile Include="GameObjects\Component.cpp" />
     <ClCompile Include="GameObjects\GameObject.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="GameObjects\Transform.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="Keyframe.cpp" />
+    <ClCompile Include="Math\Bounds.cpp" />
     <ClCompile Include="Math\Vector.cpp" />
     <ClCompile Include="Math\VectorInt.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
@@ -196,6 +198,7 @@
     <ClInclude Include="Events\Observer.h" />
     <ClInclude Include="Events\Subject.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameObjects\Collider.h" />
     <ClInclude Include="GameObjects\CommandManager.h" />
     <ClInclude Include="GameObjects\Component.h" />
     <ClInclude Include="GameObjects\GameObject.h" />
@@ -205,6 +208,7 @@
     <ClInclude Include="GameObjects\Transform.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="Keyframe.h" />
+    <ClInclude Include="Math\Bounds.h" />
     <ClInclude Include="Math\Math.h" />
     <ClInclude Include="Math\Vector.h" />
     <ClInclude Include="Math\VectorInt.h" />

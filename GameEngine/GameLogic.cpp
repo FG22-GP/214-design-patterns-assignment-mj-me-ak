@@ -1,6 +1,7 @@
 #include "GameLogic.h"
 
 #include "Animator.h"
+#include "GameObjects/Collider.h"
 #include "GameObjects/CommandManager.h"
 #include "GameObjects/GameObject.h"
 #include "GameObjects/ObjectRenderer.h"
@@ -31,6 +32,11 @@ void GameLogic::Init()
     
     playerGameObject1->objectRenderer->SetTextureColor(153, 229, 80);
     playerGameObject2->objectRenderer->SetTextureColor(229, 153, 80);
+
+    auto collider1 = playerGameObject1->AddComponent<Collider>();
+    auto collider2 = playerGameObject2->AddComponent<Collider>();
+    collider1->debugLines = true;
+    collider2->debugLines = true;
 }
 
 void GameLogic::Update(float deltaTime)

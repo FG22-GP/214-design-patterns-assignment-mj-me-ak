@@ -9,6 +9,7 @@
 #include "GameLogic.h"
 #include "input.h"
 #include "Window.h"
+#include "GameObjects/Collider.h"
 #include "GameObjects/ObjectRenderer.h"
 
 const Uint32 FIXED_TIME_STEP = 16;
@@ -66,7 +67,13 @@ int main(int argc, char* args[])
 		window.clear();
 		for (auto gameObject : GameLogic::GameObjects)
 		{
-			gameObject->objectRenderer->Render(&window);			
+			gameObject->objectRenderer->Render(&window);
+			auto collider = gameObject->GetComponent<Collider>();
+			if(collider)
+			{
+				if(collider->debugLines)
+					collider->DrawDebugBound(&window);
+			}
 		}
 		window.present();
 	}

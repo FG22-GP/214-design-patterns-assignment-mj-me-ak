@@ -34,3 +34,13 @@ VectorInt Transform::WorldToScreenScale()
 
     return VectorInt(static_cast<int>(x), static_cast<int>(y));
 }
+
+VectorInt Transform::WorldToScreen(Vector position)
+{
+    float heightToWidthRatio = static_cast<float>(Window::ScreenHeight) / static_cast<float>(Window::ScreenWidth);
+    float heightBound = WidthBound * heightToWidthRatio;
+
+    int screenX = Math::Lerp(0, Window::ScreenWidth, Math::InverseLerp(-WidthBound, WidthBound, position.x));
+    int screenY = Math::Lerp(0, Window::ScreenHeight, Math::InverseLerp(-heightBound, heightBound, -position.y));
+    return VectorInt(screenX, screenY);
+}

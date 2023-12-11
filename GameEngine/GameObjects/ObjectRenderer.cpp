@@ -57,7 +57,6 @@ void ObjectRenderer::Render(Window* window)
 {
     if(texture == nullptr)
         return;
-
     
     SDL_Rect destinationRectangle = GetDestinationRect();
     SDL_Rect sourceRectangle = GetSourceRect();
