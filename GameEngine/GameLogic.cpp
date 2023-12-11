@@ -14,6 +14,9 @@ GameLogic::GameLogic()
 
 void GameLogic::Init()
 {
+    auto inputGameObject = new GameObject();
+    auto commandManager = inputGameObject->AddComponent<CommandManager>();
+    
     Vector player1Pos = Vector(-10, -6);
     Vector player2Pos = Vector(10, -6);
     auto playerGameObject1 = Instantiate(player1Pos);
@@ -23,8 +26,6 @@ void GameLogic::Init()
     playerGameObject1->AddComponent<Player>();
     playerGameObject2->AddComponent<Player>();
 
-    auto inputGameObject = new GameObject();
-    auto commandManager = inputGameObject->AddComponent<CommandManager>();
     commandManager->player1 = playerGameObject1;
     commandManager->player2 = playerGameObject2;
     

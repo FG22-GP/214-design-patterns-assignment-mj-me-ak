@@ -11,7 +11,7 @@
 #include "Window.h"
 #include "GameObjects/ObjectRenderer.h"
 
-const Uint32 MS_PER_UPDATE = 16;
+const Uint32 FIXED_TIME_STEP = 16;
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1600;
@@ -53,10 +53,10 @@ int main(int argc, char* args[])
 		}
 
 		// update game logic
-		while (lag >= MS_PER_UPDATE)
+		while (lag >= FIXED_TIME_STEP)
 		{
 			gameLogic.FixedUpdate();
-			lag -= MS_PER_UPDATE;
+			lag -= FIXED_TIME_STEP;
 		}
 
 		gameLogic.Update(static_cast<float>(elapsed) / 1000.f);

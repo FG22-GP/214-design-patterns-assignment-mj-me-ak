@@ -3,6 +3,8 @@
 // #include <complex>
 // #include <iostream>
 
+#include <algorithm>
+
 #include "GameObject.h"
 #include "ObjectRenderer.h"
 #include "Transform.h"
@@ -26,14 +28,17 @@ void Player::FixedUpdate()
 {
     Component::FixedUpdate();
 
-    transform->position->x += (horizontalSpeed * speedMultiplier) * moveSpeed;
+    if(isMoving)
+        transform->position->x += (horizontalSpeed * speedMultiplier) * moveSpeed;
 }
 
 void Player::Move(float direction)
 {
+    if(direction == -1 && horizontalSpeed == 1)
+        horizontalSpeed = 0;
+    
     float towards = direction - horizontalSpeed;
-    if(std::abs(towards) > 0.01f)
-        towards /= std::abs(towards);
+    towards = std::clamp(towards, -1.f, 1.f);
     horizontalSpeed += towards;
 
     if (std::abs(horizontalSpeed) < 0.1f && isMoving)
@@ -41,7 +46,10 @@ void Player::Move(float direction)
         // player has stopped moving
         isMoving = false;
         if(!isCrouching)
+        {
+            printf("idle \n");
             Notify(*gameObject, StartIdle);
+        }
     }
 
     if (std::abs(horizontalSpeed) >= 0.1f && !isMoving)
@@ -49,7 +57,10 @@ void Player::Move(float direction)
         // player has started moving
         isMoving = true;
         if(!isCrouching)
+        {
+            printf("walk \n");
             Notify(*gameObject, StartWalk);
+        }
     }
 }
 

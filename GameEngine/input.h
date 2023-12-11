@@ -18,9 +18,9 @@ public:
 
 class Move : public Command 
 {
-    int direction;
+    float direction;
 public:
-    Move(int direction) : direction(direction)
+    Move(float direction) : direction(direction)
     {        
     }
     
