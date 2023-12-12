@@ -4,6 +4,7 @@
 #include "GameObjects/Collider.h"
 #include "GameObjects/CommandManager.h"
 #include "GameObjects/GameObject.h"
+#include "GameObjects/Health.h"
 #include "GameObjects/ObjectRenderer.h"
 #include "GameObjects/Player.h"
 #include "GameObjects/Transform.h"
@@ -30,6 +31,9 @@ void GameLogic::Init()
     
     playerGameObject1->AddComponent<Animator>();
     playerGameObject2->AddComponent<Animator>();
+
+    playerGameObject1->AddComponent<Health>();
+    playerGameObject2->AddComponent<Health>();
     
     auto player1 = playerGameObject1->AddComponent<Player>();
     auto player2 = playerGameObject2->AddComponent<Player>();
