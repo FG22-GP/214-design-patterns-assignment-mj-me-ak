@@ -11,6 +11,8 @@ class Player : public Component, Subject
     bool isCrouching;
 
     Collider* collider;
+    
+    Bounds GetPunchBounds();
 public:
     float moveSpeed = 0.1f;
 
@@ -18,7 +20,8 @@ public:
     
     virtual void Start() override;
     virtual void FixedUpdate() override;
-
+    
     void Move(float direction);
     void Crouch(bool isCrouching);
+    void Punch();
 };

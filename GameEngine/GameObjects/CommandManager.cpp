@@ -9,8 +9,8 @@ void CommandManager::Start()
 {
     Component::Start();
 
-    inputHandler1 = new InputHandler(new InputScheme(SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_A, SDL_SCANCODE_D));
-    inputHandler2 = new InputHandler(new InputScheme(SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT));
+    inputHandler1 = new InputHandler(new InputScheme(SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_E));
+    inputHandler2 = new InputHandler(new InputScheme(SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_KP_1));
 }
 
 void CommandManager::Update(float deltaTime)

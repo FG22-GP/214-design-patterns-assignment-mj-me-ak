@@ -3,11 +3,12 @@
 class InputScheme
 {
 public:
-    InputScheme(int up, int down, int left, int right)
+    InputScheme(int up, int down, int left, int right, int punch)
         : up(up),
           down(down),
           left(left),
-          right(right)
+          right(right),
+            punch(punch)
     {
         
     }
@@ -15,4 +16,5 @@ public:
     int down;
     int left;
     int right;
+    int punch;
 };

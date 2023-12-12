@@ -35,7 +35,8 @@ class Punch : public Command
 {
     void execute(GameObject* gameObject)
     {
-        
+        auto player = gameObject->GetComponent<Player>();
+        player->Punch();
     }
 };
 
@@ -71,7 +72,7 @@ class InputHandler
     Command* buttonRightRelease;
     Command* buttonUpRelease;
     Command* buttonDownRelease;
-    Command* buttonNumPad1_;
+    Command* buttonPunchPress;
 
     InputScheme* inputScheme;
 

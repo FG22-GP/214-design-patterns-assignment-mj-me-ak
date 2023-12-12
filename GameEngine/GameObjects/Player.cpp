@@ -12,6 +12,7 @@
 
 class Animator;
 
+
 void Player::Start()
 {
     Component::Start();
@@ -78,3 +79,19 @@ void Player::Crouch(bool isCrouching)
         Notify(*gameObject, isMoving ? StartWalk : StartIdle);
     }
 }
+
+void Player::Punch()
+{
+    Bounds punchBound = GetPunchBounds();
+    if(other->collider->CollidesWith(punchBound))
+    {
+        printf("HIT, lost health");
+    }
+}
+
+Bounds Player::GetPunchBounds()
+{
+    
+    return Bounds(transform->position->x + 0.25f, transform->position->y - 0.165f, 2, 0.33f);
+}
+
