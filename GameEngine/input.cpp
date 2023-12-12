@@ -48,7 +48,7 @@ InputHandler::~InputHandler()
     if (!keystate[inputScheme->right] && previousKeyState[inputScheme->right]) commands.push_back(buttonRightRelease);
     
     if (keystate[inputScheme->up] && !previousKeyState[inputScheme->up]) commands.push_back(buttonUpPress);
-    if (!keystate[inputScheme->up] && previousKeyState[inputScheme->up]) commands.push_back(buttonUpRelease);
+    //if (!keystate[inputScheme->up] && previousKeyState[inputScheme->up]) commands.push_back(buttonUpRelease);
     
     if (keystate[inputScheme->down] && !previousKeyState[inputScheme->down]) commands.push_back(buttonDownPress);
     if (!keystate[inputScheme->down] && previousKeyState[inputScheme->down]) commands.push_back(buttonDownRelease);
