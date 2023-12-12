@@ -19,8 +19,8 @@ public:
     Health* health;
 
     bool locked;
-    
     float moveSpeed = 0.1f;
+    bool isLeftOfOther;
 
     
     virtual void Start() override;

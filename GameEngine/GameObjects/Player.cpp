@@ -40,6 +40,17 @@ void Player::FixedUpdate()
 {
     Component::FixedUpdate();
 
+    if(other->transform->position->x >= transform->position->x)
+    {
+        isLeftOfOther = true;
+    }
+    else
+    {
+        isLeftOfOther = false;
+    }
+
+    objectRenderer->flipped = isLeftOfOther ? false : true;
+
     if(isMoving && !locked)
         transform->position->x += (horizontalSpeed * speedMultiplier) * moveSpeed;
 }

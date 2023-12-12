@@ -45,7 +45,7 @@ void Collider::DrawDebugBound(Window* window)
     SDL_SetRenderDrawColor(window->renderer, r, g, b, 255);
     SDL_RenderDrawLines(window->renderer, points, 5);
 
-    Bounds punchBounds = Bounds(transform->position->x, transform->position->y - 1.f, 1.3f, .5f);
+    Bounds punchBounds = Bounds(transform->position->x - (objectRenderer->flipped ? 1.3f : 0), transform->position->y - 1.f, 1.3f, .5f);
     VectorInt pBottomLeftScreenSpace = transform->WorldToScreen(Vector(punchBounds.x, punchBounds.y)); 
     VectorInt pTopRightScreenSpace = transform->WorldToScreen(Vector(punchBounds.x + punchBounds.w, punchBounds.y + punchBounds.h)); 
     SDL_Point pPoints[] = 

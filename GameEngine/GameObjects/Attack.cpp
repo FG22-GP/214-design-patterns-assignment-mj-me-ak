@@ -25,11 +25,6 @@ void Attack::Update(float deltaTime)
     }
 }
 
-// create weak pointer
-// pass player b as weak pointer to player a
-// when player a accesses it, you can check weak pointer get reference, which returns a shared pointer, it ensures player does not get destroyed while you hold it
-// engine (or someone else) always holds a shared pointer until Destroy is called, then you release the shared pointer handle
-
 void Attack::StartPunch()
 {
     if(punchStarted || player->locked) return;
@@ -63,5 +58,12 @@ void Attack::EndPunch()
 
 Bounds Attack::GetPunchBounds()
 {
-    return Bounds(transform->position->x, transform->position->y - punchHeight * 2, punchWidth, punchHeight);
+    float offset = 0;
+
+    if(!player->isLeftOfOther)
+    {
+        offset = -punchWidth;
+    }
+    
+    return Bounds(transform->position->x + offset, transform->position->y - punchHeight * 2, punchWidth, punchHeight);
 }
