@@ -47,7 +47,6 @@ void Player::Move(float direction)
         isMoving = false;
         if(!isCrouching)
         {
-            printf("idle \n");
             Notify(*gameObject, StartIdle);
         }
     }
@@ -58,7 +57,6 @@ void Player::Move(float direction)
         isMoving = true;
         if(!isCrouching)
         {
-            printf("walk \n");
             Notify(*gameObject, StartWalk);
         }
     }
