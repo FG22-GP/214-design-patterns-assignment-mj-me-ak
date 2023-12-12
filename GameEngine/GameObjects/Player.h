@@ -17,6 +17,9 @@ class Player : public Component, Subject
     Bounds GetPunchBounds();
 public:
     float moveSpeed = 0.1f;
+    float punchHeight = 1;
+    float punchWidth = 3;
+    int punchDamage = 2;
 
     Player* other;
     

@@ -15,6 +15,7 @@ public:
     Uint8 r = 255, g = 0, b = 0;
     
     bool debugLines = false;
+    std::shared_ptr<Vector> offset;
     std::shared_ptr<Vector> scale;
 
     virtual void Awake() override;

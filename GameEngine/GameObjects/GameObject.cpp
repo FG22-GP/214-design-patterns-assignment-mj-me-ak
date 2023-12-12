@@ -33,6 +33,9 @@ void GameObject::Start()
 
 void GameObject::Update(float deltaTime)
 {
+    if(destroyed)
+        return;
+    
     transform->Update(deltaTime);
     objectRenderer->Update(deltaTime);
     for (Component* component : components)
@@ -44,6 +47,9 @@ void GameObject::Update(float deltaTime)
 
 void GameObject::FixedUpdate()
 {
+    if(destroyed)
+        return;
+    
     transform->FixedUpdate();
     objectRenderer->FixedUpdate();
     for (Component* component : components)
@@ -54,6 +60,7 @@ void GameObject::FixedUpdate()
 
 void GameObject::End()
 {
+    destroyed = true;
     GameLogic::UnregisterGameObject(this);
     
     transform->End();

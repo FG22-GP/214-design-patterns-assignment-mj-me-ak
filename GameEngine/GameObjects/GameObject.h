@@ -7,6 +7,8 @@ class GameObject
 {
     friend class GameLogic;
 
+    bool destroyed = false;
+
     GameObject();
 
     void Init();

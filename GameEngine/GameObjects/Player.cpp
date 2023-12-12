@@ -86,13 +86,12 @@ void Player::Punch()
     Bounds punchBound = GetPunchBounds();
     if(other->collider->CollidesWith(punchBound))
     {
-        other->health->ChangeHealth(-5);
+        other->health->ChangeHealth(-punchDamage);
     }
 }
 
 Bounds Player::GetPunchBounds()
-{
-    
-    return Bounds(transform->position->x + 0.25f, transform->position->y - 0.165f, 2, 0.33f);
+{    
+    return Bounds(transform->position->x, transform->position->y - punchHeight / 2, punchWidth, punchHeight);
 }
 

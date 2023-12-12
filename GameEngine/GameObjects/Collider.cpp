@@ -8,6 +8,7 @@
 
 Collider::Collider()
 {
+    offset = std::make_shared<Vector>(0, 0);
     scale = std::make_shared<Vector>(1, 1);
 }
 
@@ -43,13 +44,27 @@ void Collider::DrawDebugBound(Window* window)
     };
     SDL_SetRenderDrawColor(window->renderer, r, g, b, 255);
     SDL_RenderDrawLines(window->renderer, points, 5);
+
+    Bounds punchBounds = Bounds(transform->position->x, transform->position->y - 0.5f, 3, 1);
+    VectorInt pBottomLeftScreenSpace = transform->WorldToScreen(Vector(punchBounds.x, punchBounds.y)); 
+    VectorInt pTopRightScreenSpace = transform->WorldToScreen(Vector(punchBounds.x + punchBounds.w, punchBounds.y + punchBounds.h)); 
+    SDL_Point pPoints[] = 
+        {
+        SDL_Point(pBottomLeftScreenSpace.x, pBottomLeftScreenSpace.y),
+        SDL_Point(pBottomLeftScreenSpace.x, pTopRightScreenSpace.y),
+        SDL_Point(pTopRightScreenSpace.x, pTopRightScreenSpace.y),
+        SDL_Point(pTopRightScreenSpace.x, pBottomLeftScreenSpace.y),
+        SDL_Point(pBottomLeftScreenSpace.x, pBottomLeftScreenSpace.y)
+    };
+    SDL_SetRenderDrawColor(window->renderer, r, g, b, 255);
+    SDL_RenderDrawLines(window->renderer, pPoints, 5);
 }
 
 Bounds Collider::GetBounds()
 {
     return Bounds(
-        transform->position->x - transform->scale->x * scale->x / 2,
-        transform->position->y - transform->scale->y * scale->y / 2,
+        (transform->position->x + offset->x) - transform->scale->x * scale->x / 2,
+        (transform->position->y + offset->y) - transform->scale->y * scale->y / 2,
         transform->scale->x * scale->x,
         transform->scale->y * scale->y);
 }
