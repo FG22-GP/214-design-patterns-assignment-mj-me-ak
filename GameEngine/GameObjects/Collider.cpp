@@ -23,6 +23,11 @@ bool Collider::CollidesWith(Collider* other)
     return GetBounds().CollidesWith(other->GetBounds());
 }
 
+bool Collider::CollidesWith(Bounds other)
+{
+    return GetBounds().CollidesWith(other);
+}
+
 void Collider::DrawDebugBound(Window* window)
 {
     Bounds bounds = GetBounds();

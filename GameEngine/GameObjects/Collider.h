@@ -20,6 +20,7 @@ public:
     virtual void Awake() override;
 
     bool CollidesWith(Collider* other); 
+    bool CollidesWith(Bounds other); 
     void DrawDebugBound(Window* window);
     
     virtual Bounds GetBounds();

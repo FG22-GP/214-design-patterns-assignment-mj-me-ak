@@ -63,8 +63,8 @@ public:
 
 class InputHandler
 {    
-    Command* buttonLeftPress;
-    Command* buttonRightPress;
+    Command* buttonLeftHold;
+    Command* buttonRightHold;
     Command* buttonUpPress;
     Command* buttonDownPress;
     Command* buttonLeftRelease;

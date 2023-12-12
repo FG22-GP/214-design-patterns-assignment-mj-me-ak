@@ -10,9 +10,9 @@ InputHandler::InputHandler(InputScheme* inputScheme)
 
     this->inputScheme = inputScheme; //&inputScheme turns into ptr , inputScheme& then its reference?
         
-    buttonLeftPress = new Move(-1.f);
+    buttonLeftHold = new Move(-1.f);
     buttonLeftRelease = new Move(0);
-    buttonRightPress = new Move(1.f);
+    buttonRightHold = new Move(1.f);
     buttonRightRelease = new Move(0);
     buttonUpPress = new Jump();
     buttonDownPress = new Crouch(true);
@@ -22,9 +22,9 @@ InputHandler::InputHandler(InputScheme* inputScheme)
 
 InputHandler::~InputHandler()
 {
-    delete buttonLeftPress;
+    delete buttonLeftHold;
     delete buttonLeftRelease;
-    delete buttonRightPress;
+    delete buttonRightHold;
     delete buttonRightRelease;
     delete buttonUpPress;
     delete buttonUpRelease;
@@ -39,10 +39,10 @@ InputHandler::~InputHandler()
     std::vector<Command*> commands = { };
     
     const Uint8* keystate = SDL_GetKeyboardState(NULL);
-    if (keystate[inputScheme->left] && previousKeyState[inputScheme->left]) commands.push_back(buttonLeftPress);
+    if (keystate[inputScheme->left] && previousKeyState[inputScheme->left]) commands.push_back(buttonLeftHold);
     if (!keystate[inputScheme->left] && previousKeyState[inputScheme->left]) commands.push_back(buttonLeftRelease);
     
-    if (keystate[inputScheme->right] && previousKeyState[inputScheme->right]) commands.push_back(buttonRightPress);
+    if (keystate[inputScheme->right] && previousKeyState[inputScheme->right]) commands.push_back(buttonRightHold);
     if (!keystate[inputScheme->right] && previousKeyState[inputScheme->right]) commands.push_back(buttonRightRelease);
     
     if (keystate[inputScheme->up] && !previousKeyState[inputScheme->up]) commands.push_back(buttonUpPress);
