@@ -1,14 +1,52 @@
 #include "Attack.h"
 #include "Player.h"
 #include "Transform.h"
+#include "../Animator.h"
 
-void Attack::Punch()
+void Attack::Start()
 {
-    Bounds punchBound = GetPunchBounds();
-    if(player->other->collider->CollidesWith(punchBound))
+    Component::Start();
+
+    AddObserver(gameObject->GetComponent<Animator>());
+}
+
+void Attack::Update(float deltaTime)
+{
+    Component::Update(deltaTime);
+
+    if(punchStarted && punchHitBoxEnabled && !hasHitEnemy)
     {
-        player->other->health->ChangeHealth(-punchDamage);
+        Bounds punchBound = GetPunchBounds();
+        if(player->other->collider->CollidesWith(punchBound))
+        {
+            player->other->health->ChangeHealth(-punchDamage);
+            hasHitEnemy = true;
+        }
     }
+}
+
+void Attack::StartPunch()
+{
+    Notify(*gameObject, Event::StartPunch);
+}
+
+void Attack::EnablePunchHitBox()
+{
+    if(punchStarted)
+        punchHitBoxEnabled = true;
+}
+
+void Attack::DisablePunchHitBox()
+{
+    if(punchStarted)
+        punchHitBoxEnabled = false;
+}
+
+void Attack::EndPunch()
+{
+    punchStarted = false;
+    punchHitBoxEnabled = false;
+    hasHitEnemy = false;
 }
 
 Bounds Attack::GetPunchBounds()

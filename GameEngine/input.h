@@ -36,7 +36,7 @@ class Punch : public Command
 {
     void execute(GameObject* gameObject)
     {
-        gameObject->GetComponent<Attack>()->Punch();
+        gameObject->GetComponent<Attack>()->StartPunch();
     }
 };
 
