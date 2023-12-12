@@ -17,7 +17,7 @@ void Player::Start()
 {
     Component::Start();
 
-    objectRenderer->SetSpriteSheet("img/AnimationSheet.png", 8, 4);
+    objectRenderer->SetSpriteSheet("img/AnimationSheet.png", 8, 5);
     transform->scale->x = 3;
     transform->scale->y = 3;
     Animator* animator = gameObject->GetComponent<Animator>();
