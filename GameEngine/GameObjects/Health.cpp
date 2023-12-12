@@ -22,6 +22,6 @@ void Health::ChangeHealth(int delta)
     
     if(currentHealth <= 0)
     {
-        gameObject->GetComponent<Player>()->locked = true;
+        Notify(*gameObject, StartDeath);
     }
 }

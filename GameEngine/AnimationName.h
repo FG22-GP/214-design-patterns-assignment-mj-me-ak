@@ -6,5 +6,6 @@ enum AnimationName
     Walk,
     Crouch,
     Punch,
-    Hurt
+    Hurt,
+    Death
 };

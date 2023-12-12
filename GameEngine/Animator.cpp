@@ -39,7 +39,7 @@ Animator::Animator()
         Keyframe(0.4f, 4, enableAttack),
         Keyframe(0.5f, 5),
         Keyframe(0.6f, 6, disableAttack),
-        Keyframe(0.6f, 6, endAttack)}};
+        Keyframe(0.7f, 6, endAttack)}};
 
     Animation* hurtAnimation = new Animation {Hurt, 4, 0.4f, false,
     {Keyframe{0.0f, 0, lock},
@@ -47,11 +47,20 @@ Animator::Animator()
     Keyframe{0.2f, 2},
     Keyframe{0.3f, 3, startIdle}}};
 
+    Animation* deathAnimation = new Animation {Death, 6, 0.8f, false,
+    {Keyframe{0.0f, 0, lock},
+    Keyframe{0.1f, 1},
+    Keyframe{0.2f, 2},
+    Keyframe{0.3f, 3},
+    Keyframe{0.4f, 4},
+    Keyframe{0.7f, 5}}};
+
     animations[Idle] = idleAnimation;
     animations[Walk] = walkAnimation;
     animations[Crouch] = crouchAnimation;
     animations[Punch] = punchAnimation;
     animations[Hurt] = hurtAnimation;
+    animations[Death] = deathAnimation;
 }
 
 void Animator::OnNotify(const GameObject& gameObject, Event event)
@@ -74,6 +83,9 @@ void Animator::OnNotify(const GameObject& gameObject, Event event)
         case StartHurt:
             currentAnimation = animations[Hurt];
             break;
+        case StartDeath:
+            currentAnimation = animations[Death];
+        break;
     }
 }
 

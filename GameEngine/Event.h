@@ -6,5 +6,6 @@ enum Event
     StartWalk,
     StartCrouch,
     StartPunch,
-    StartHurt
+    StartHurt,
+    StartDeath
 };
