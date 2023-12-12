@@ -61,7 +61,7 @@ void ObjectRenderer::Render(Window* window)
     
     SDL_Rect destinationRectangle = GetDestinationRect();
     SDL_Rect sourceRectangle = GetSourceRect();
-    window->CopyTextureToRenderer(texture, &sourceRectangle, &destinationRectangle);
+    window->CopyTextureToRenderer(texture, &sourceRectangle, &destinationRectangle, flipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 
     if(collider)
     {

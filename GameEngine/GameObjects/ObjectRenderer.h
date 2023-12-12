@@ -22,6 +22,8 @@ class ObjectRenderer : public Component
     SDL_Rect GetSourceRect();
     SDL_Rect GetDestinationRect();
 public:
+    bool flipped = false;
+    
     virtual void Start() override;
     void SetTexture(const char* imagePath);
     void SetTextureColor(Uint8 r, Uint8 g, Uint8 b);
