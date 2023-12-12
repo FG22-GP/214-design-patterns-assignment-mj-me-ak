@@ -28,6 +28,7 @@ struct Keyframe
     
     virtual void Execute(GameObject* gameObject, AnimationName animationName)
     {
+        function(gameObject);
         gameObject->objectRenderer->SetSpriteSheetIndex(frameIndex, animationName);
     }
 };

@@ -1,11 +1,16 @@
 #include "Animator.h"
 
 #include "GameObjects/ObjectRenderer.h"
+#include "GameObjects/Attack.h"
 
 Animator::Animator()
 {
     currentAnimationTime = 0.0f;
 
+    std::function<void(GameObject*)> enableAttack = [](GameObject* gameObject) { gameObject->GetComponent<Attack>()->EnablePunchHitBox(); };
+    std::function<void(GameObject*)> disableAttack = [](GameObject* gameObject) { gameObject->GetComponent<Attack>()->DisablePunchHitBox(); };
+    std::function<void(GameObject*)> endAttack = [](GameObject* gameObject) { gameObject->GetComponent<Attack>()->EndPunch(); };
+    
     Animation* idleAnimation = new Animation {Idle, 1, 1, false, {Keyframe{0.0f, 0}}};
     
     Animation* walkAnimation = new Animation {Walk, 8, 0.8f, true,
@@ -25,9 +30,10 @@ Animator::Animator()
         Keyframe(0.1f, 1),
         Keyframe(0.2f, 2),
         Keyframe(0.3f, 3),
-        Keyframe(0.4f, 4),
+        Keyframe(0.4f, 4, enableAttack),
         Keyframe(0.5f, 5),
-        Keyframe(0.6f, 6)}};
+        Keyframe(0.6f, 6, disableAttack),
+        Keyframe(0.6f, 6, endAttack)}};
 
     animations[Idle] = idleAnimation;
     animations[Walk] = walkAnimation;
@@ -40,7 +46,7 @@ void Animator::OnNotify(const GameObject& gameObject, Event event)
     currentAnimationTime = 0.0f;
     switch (event)
     {
-        case StartWalk:
+    case StartWalk:
             currentAnimation = animations[Walk];
             break;
         case StartIdle:

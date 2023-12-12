@@ -27,6 +27,8 @@ void Attack::Update(float deltaTime)
 
 void Attack::StartPunch()
 {
+    if(punchStarted) return;
+    punchStarted = true;
     Notify(*gameObject, Event::StartPunch);
 }
 
