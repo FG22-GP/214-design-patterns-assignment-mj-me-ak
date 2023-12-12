@@ -176,6 +176,7 @@
     </ClCompile>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameObjects\Attack.cpp" />
     <ClCompile Include="GameObjects\Collider.cpp" />
     <ClCompile Include="GameObjects\CommandManager.cpp" />
     <ClCompile Include="GameObjects\Component.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="Events\Observer.h" />
     <ClInclude Include="Events\Subject.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameObjects\Attack.h" />
     <ClInclude Include="GameObjects\Collider.h" />
     <ClInclude Include="GameObjects\CommandManager.h" />
     <ClInclude Include="GameObjects\Component.h" />

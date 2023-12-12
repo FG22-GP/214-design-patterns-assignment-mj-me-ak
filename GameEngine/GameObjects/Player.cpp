@@ -17,15 +17,19 @@ void Player::Start()
 {
     Component::Start();
 
-    objectRenderer->SetSpriteSheet("img/AnimationSheetGreyscale.png", 8, 3);
+    objectRenderer->SetSpriteSheet("img/AnimationSheet.png", 8, 4);
     transform->scale->x = 3;
     transform->scale->y = 3;
     Animator* animator = gameObject->GetComponent<Animator>();
     AddObserver(animator);
     Notify(*gameObject, StartIdle);
 
-    collider = gameObject->GetComponent<Collider>();
-    health = gameObject->GetComponent<Health>();
+    collider = gameObject->AddComponent<Collider>();
+    health = gameObject->AddComponent<Health>();
+    attack = gameObject->AddComponent<Attack>();
+    attack->player = this;
+
+    collider->debugLines = true;
 }
 
 void Player::FixedUpdate()
@@ -79,19 +83,5 @@ void Player::Crouch(bool isCrouching)
         speedMultiplier = 1;
         Notify(*gameObject, isMoving ? StartWalk : StartIdle);
     }
-}
-
-void Player::Punch()
-{
-    Bounds punchBound = GetPunchBounds();
-    if(other->collider->CollidesWith(punchBound))
-    {
-        other->health->ChangeHealth(-punchDamage);
-    }
-}
-
-Bounds Player::GetPunchBounds()
-{    
-    return Bounds(transform->position->x, transform->position->y - punchHeight / 2, punchWidth, punchHeight);
 }
 

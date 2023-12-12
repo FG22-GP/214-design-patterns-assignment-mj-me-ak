@@ -24,17 +24,9 @@ void GameLogic::Init()
     auto playerGameObject1 = Instantiate(player1Pos);
     auto playerGameObject2 = Instantiate(player2Pos);
     
-    auto collider1 = playerGameObject1->AddComponent<Collider>();
-    auto collider2 = playerGameObject2->AddComponent<Collider>();
-    collider1->debugLines = true;
-    collider2->debugLines = true;
-    
     playerGameObject1->AddComponent<Animator>();
     playerGameObject2->AddComponent<Animator>();
 
-    playerGameObject1->AddComponent<Health>();
-    playerGameObject2->AddComponent<Health>();
-    
     auto player1 = playerGameObject1->AddComponent<Player>();
     auto player2 = playerGameObject2->AddComponent<Player>();
     player1->other = player2;

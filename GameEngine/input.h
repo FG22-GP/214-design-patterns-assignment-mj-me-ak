@@ -3,6 +3,7 @@
 #include <map>
 #include <SDL_stdinc.h>
 
+#include "GameObjects/Attack.h"
 #include "GameObjects/GameObject.h"
 #include "GameObjects/InputScheme.h"
 #include "GameObjects/Player.h"
@@ -35,8 +36,7 @@ class Punch : public Command
 {
     void execute(GameObject* gameObject)
     {
-        auto player = gameObject->GetComponent<Player>();
-        player->Punch();
+        gameObject->GetComponent<Attack>()->Punch();
     }
 };
 
