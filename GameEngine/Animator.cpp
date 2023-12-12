@@ -31,7 +31,7 @@ Animator::Animator()
 
     Animation* crouchAnimation = new Animation {Crouch, 1, 1, false, {Keyframe{0.0f, 0}}};
 
-    Animation* punchAnimation = new Animation {Punch, 7, 0.7f, false,
+    Animation* punchAnimation = new Animation {Punch, 7, 0.9f, false,
         {Keyframe{0.0f, 0},
         Keyframe(0.1f, 1),
         Keyframe(0.2f, 2),
@@ -39,13 +39,15 @@ Animator::Animator()
         Keyframe(0.4f, 4, enableAttack),
         Keyframe(0.5f, 5),
         Keyframe(0.6f, 6, disableAttack),
-        Keyframe(0.7f, 6, endAttack)}};
+            Keyframe(0.7f, 7),
+        Keyframe(0.9f, 7, endAttack)}};
 
     Animation* hurtAnimation = new Animation {Hurt, 4, 0.4f, false,
     {Keyframe{0.0f, 0, lock},
     Keyframe{0.1f, 1},
     Keyframe{0.2f, 2},
-    Keyframe{0.3f, 3, startIdle}}};
+    Keyframe{0.3f, 3, startIdle},
+    Keyframe{0.3f, 3, endAttack}}};
 
     Animation* deathAnimation = new Animation {Death, 6, 0.8f, false,
     {Keyframe{0.0f, 0, lock},
