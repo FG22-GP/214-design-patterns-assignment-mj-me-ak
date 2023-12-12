@@ -5,5 +5,6 @@ enum AnimationName
     Idle,
     Walk,
     Crouch,
-    Punch
+    Punch,
+    Hurt
 };

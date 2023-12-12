@@ -35,10 +35,17 @@ Animator::Animator()
         Keyframe(0.6f, 6, disableAttack),
         Keyframe(0.6f, 6, endAttack)}};
 
+    Animation* hurtAnimation = new Animation {Hurt, 4, 0.4f, true,
+    {Keyframe{0.0f, 0},
+    Keyframe{0.1f, 1},
+    Keyframe{0.2f, 2},
+    Keyframe{0.3f, 3}}};
+
     animations[Idle] = idleAnimation;
     animations[Walk] = walkAnimation;
     animations[Crouch] = crouchAnimation;
     animations[Punch] = punchAnimation;
+    animations[Hurt] = hurtAnimation;
 }
 
 void Animator::OnNotify(const GameObject& gameObject, Event event)
@@ -46,7 +53,7 @@ void Animator::OnNotify(const GameObject& gameObject, Event event)
     currentAnimationTime = 0.0f;
     switch (event)
     {
-    case StartWalk:
+        case StartWalk:
             currentAnimation = animations[Walk];
             break;
         case StartIdle:
@@ -57,6 +64,9 @@ void Animator::OnNotify(const GameObject& gameObject, Event event)
             break;
         case StartPunch:
             currentAnimation = animations[Punch];
+            break;
+        case StartHurt:
+            currentAnimation = animations[Hurt];
             break;
     }
 }
@@ -82,7 +92,7 @@ void Animator::Update(float deltaTime)
             
             if(currentAnimationTime >= currentAnimation->length && currentAnimation->shouldLoop)
             {
-                currentAnimationTime = 0.0f;
+                currentAnimationTime -= currentAnimation->length;
             }
             break;
         }
