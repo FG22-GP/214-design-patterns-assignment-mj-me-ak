@@ -14,8 +14,8 @@ class Attack : public Component, public Subject
     Bounds GetPunchBounds();
 public:
     Player* player;
-    float punchHeight = 1;
-    float punchWidth = 3;
+    float punchHeight = 0.5f;
+    float punchWidth = 1.3f;
     int punchDamage = 2;
 
     virtual void Start() override;

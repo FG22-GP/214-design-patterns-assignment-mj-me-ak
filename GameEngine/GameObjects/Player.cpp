@@ -30,18 +30,29 @@ void Player::Start()
     attack->player = this;
 
     collider->debugLines = true;
+
+    collider->scale->x = 0.3f;
+    collider->scale->y = 0.7f;    
+    collider->offset->y = -0.35f;    
 }
 
 void Player::FixedUpdate()
 {
     Component::FixedUpdate();
 
-    if(isMoving)
+    if(isMoving && !locked)
         transform->position->x += (horizontalSpeed * speedMultiplier) * moveSpeed;
 }
 
 void Player::Move(float direction)
 {
+    if(locked || isCrouching)
+    {
+        horizontalSpeed = 0;
+        isMoving = false;
+        return;
+    }
+    
     if(direction == -1 && horizontalSpeed == 1)
         horizontalSpeed = 0;
     
@@ -53,25 +64,24 @@ void Player::Move(float direction)
     {
         // player has stopped moving
         isMoving = false;
-        if(!isCrouching)
-        {
+        
             Notify(*gameObject, StartIdle);
-        }
     }
 
     if (std::abs(horizontalSpeed) >= 0.1f && !isMoving)
     {
         // player has started moving
         isMoving = true;
-        if(!isCrouching)
-        {
+        
             Notify(*gameObject, StartWalk);
-        }
     }
 }
 
 void Player::Crouch(bool isCrouching)
 {
+    if(locked)
+        return;
+    
     this->isCrouching = isCrouching;
     if (isCrouching)
     {

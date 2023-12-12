@@ -7,7 +7,7 @@
 
 class Transform : public Component
 {
-    const float WidthBound = 20.f;
+    const float WidthBound = 15.f;
 public:
     Transform();
     std::shared_ptr<Vector> position;
