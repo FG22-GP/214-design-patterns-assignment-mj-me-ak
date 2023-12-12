@@ -4,5 +4,6 @@ enum AnimationName
 {
     Idle,
     Walk,
-    Crouch
+    Crouch,
+    Punch
 };

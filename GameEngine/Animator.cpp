@@ -20,10 +20,19 @@ Animator::Animator()
 
     Animation* crouchAnimation = new Animation {Crouch, 1, 1, false, {Keyframe{0.0f, 0}}};
 
-    
+    Animation* punchAnimation = new Animation {Punch, 7, 0.7f, false,
+        {Keyframe{0.0f, 0},
+        Keyframe(0.1f, 1),
+        Keyframe(0.2f, 2),
+        Keyframe(0.3f, 3),
+        Keyframe(0.4f, 4),
+        Keyframe(0.5f, 5),
+        Keyframe(0.6f, 6)}};
+
     animations[Idle] = idleAnimation;
     animations[Walk] = walkAnimation;
     animations[Crouch] = crouchAnimation;
+    animations[Punch] = punchAnimation;
 }
 
 void Animator::OnNotify(const GameObject& gameObject, Event event)
@@ -39,6 +48,9 @@ void Animator::OnNotify(const GameObject& gameObject, Event event)
             break;
         case StartCrouch:
             currentAnimation = animations[Crouch];
+            break;
+        case StartPunch:
+            currentAnimation = animations[Punch];
             break;
     }
 }

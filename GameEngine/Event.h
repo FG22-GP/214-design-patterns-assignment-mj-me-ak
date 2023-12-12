@@ -4,5 +4,6 @@ enum Event
 {
     StartIdle,
     StartWalk,
-    StartCrouch
+    StartCrouch,
+    StartPunch
 };
