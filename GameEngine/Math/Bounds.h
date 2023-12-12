@@ -14,4 +14,6 @@ struct Bounds
           h(h)
     {
     }
+
+    bool CollidesWith(Bounds other);
 };

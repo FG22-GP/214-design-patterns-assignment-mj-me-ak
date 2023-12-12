@@ -22,10 +22,19 @@ void GameLogic::Init()
     Vector player2Pos = Vector(10, -6);
     auto playerGameObject1 = Instantiate(player1Pos);
     auto playerGameObject2 = Instantiate(player2Pos);
+    
+    auto collider1 = playerGameObject1->AddComponent<Collider>();
+    auto collider2 = playerGameObject2->AddComponent<Collider>();
+    collider1->debugLines = true;
+    collider2->debugLines = true;
+    
     playerGameObject1->AddComponent<Animator>();
     playerGameObject2->AddComponent<Animator>();
-    playerGameObject1->AddComponent<Player>();
-    playerGameObject2->AddComponent<Player>();
+    
+    auto player1 = playerGameObject1->AddComponent<Player>();
+    auto player2 = playerGameObject2->AddComponent<Player>();
+    player1->other = player2;
+    player2->other = player1;
 
     commandManager->player1 = playerGameObject1;
     commandManager->player2 = playerGameObject2;
@@ -33,10 +42,6 @@ void GameLogic::Init()
     playerGameObject1->objectRenderer->SetTextureColor(153, 229, 80);
     playerGameObject2->objectRenderer->SetTextureColor(229, 153, 80);
 
-    auto collider1 = playerGameObject1->AddComponent<Collider>();
-    auto collider2 = playerGameObject2->AddComponent<Collider>();
-    collider1->debugLines = true;
-    collider2->debugLines = true;
 }
 
 void GameLogic::Update(float deltaTime)

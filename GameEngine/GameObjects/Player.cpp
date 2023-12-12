@@ -22,6 +22,8 @@ void Player::Start()
     Animator* animator = gameObject->GetComponent<Animator>();
     AddObserver(animator);
     Notify(*gameObject, StartIdle);
+
+    collider = gameObject->GetComponent<Collider>();
 }
 
 void Player::FixedUpdate()

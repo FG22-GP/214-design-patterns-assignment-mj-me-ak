@@ -11,12 +11,16 @@ class Collider : public Component
 {
 public:
     Collider();
+
+    Uint8 r = 255, g = 0, b = 0;
     
     bool debugLines = false;
     std::shared_ptr<Vector> scale;
 
     virtual void Awake() override;
-    
+
+    bool CollidesWith(Collider* other); 
     void DrawDebugBound(Window* window);
+    
     virtual Bounds GetBounds();
 };

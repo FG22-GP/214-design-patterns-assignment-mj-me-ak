@@ -18,6 +18,11 @@ void Collider::Awake()
     objectRenderer->collider = this;
 }
 
+bool Collider::CollidesWith(Collider* other)
+{
+    return GetBounds().CollidesWith(other->GetBounds());
+}
+
 void Collider::DrawDebugBound(Window* window)
 {
     Bounds bounds = GetBounds();
@@ -31,7 +36,7 @@ void Collider::DrawDebugBound(Window* window)
         SDL_Point(topRightScreenSpace.x, bottomLeftScreenSpace.y),
         SDL_Point(bottomLeftScreenSpace.x, bottomLeftScreenSpace.y)
     };
-    SDL_SetRenderDrawColor(window->renderer, 255, 0, 0, 255);
+    SDL_SetRenderDrawColor(window->renderer, r, g, b, 255);
     SDL_RenderDrawLines(window->renderer, points, 5);
 }
 
