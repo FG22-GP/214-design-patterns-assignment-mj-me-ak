@@ -2,8 +2,12 @@
 #include "Component.h"
 #include "../Window.h"
 
+class Collider;
+
 class ObjectRenderer : public Component
 {
+    friend Collider;
+    
     SDL_Texture* texture;
     bool isSpriteSheet;
     int columnCount;
@@ -12,6 +16,8 @@ class ObjectRenderer : public Component
     int cellHeight;
     int currentColumnIndex;
     int currentRowIndex;
+
+    Collider* collider;
 
     SDL_Rect GetSourceRect();
     SDL_Rect GetDestinationRect();

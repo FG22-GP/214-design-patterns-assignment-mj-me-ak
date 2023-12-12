@@ -1,5 +1,6 @@
 #include "ObjectRenderer.h"
 
+#include "Collider.h"
 #include "Transform.h"
 #include "../TextureLoader.h"
 #include "../Math/VectorInt.h"
@@ -61,6 +62,14 @@ void ObjectRenderer::Render(Window* window)
     SDL_Rect destinationRectangle = GetDestinationRect();
     SDL_Rect sourceRectangle = GetSourceRect();
     window->CopyTextureToRenderer(texture, &sourceRectangle, &destinationRectangle);
+
+    if(collider)
+    {
+        if(collider->debugLines)
+        {
+            collider->DrawDebugBound(window);
+        }
+    }
 }
 
 SDL_Rect ObjectRenderer::GetSourceRect()

@@ -68,12 +68,6 @@ int main(int argc, char* args[])
 		for (auto gameObject : GameLogic::GameObjects)
 		{
 			gameObject->objectRenderer->Render(&window);
-			auto collider = gameObject->GetComponent<Collider>();
-			if(collider)
-			{
-				if(collider->debugLines)
-					collider->DrawDebugBound(&window);
-			}
 		}
 		window.present();
 	}

@@ -2,8 +2,21 @@
 
 #include <SDL_render.h>
 
+#include "ObjectRenderer.h"
 #include "Transform.h"
 #include "../TextureLoader.h"
+
+Collider::Collider()
+{
+    scale = std::make_shared<Vector>(1, 1);
+}
+
+void Collider::Awake()
+{
+    Component::Awake();
+
+    objectRenderer->collider = this;
+}
 
 void Collider::DrawDebugBound(Window* window)
 {
@@ -20,14 +33,13 @@ void Collider::DrawDebugBound(Window* window)
     };
     SDL_SetRenderDrawColor(window->renderer, 255, 0, 0, 255);
     SDL_RenderDrawLines(window->renderer, points, 5);
-    //SDL_RenderDrawLine(window->renderer, bottomLeftSpace.x, bottomLeftSpace.y, bottomLeftSpace.x, topRightSpace.y);
 }
 
 Bounds Collider::GetBounds()
 {
     return Bounds(
-        transform->position->x - transform->scale->x / 2,
-        transform->position->y - transform->scale->y / 2,
-        transform->scale->x,
-        transform->scale->y);
+        transform->position->x - transform->scale->x * scale->x / 2,
+        transform->position->y - transform->scale->y * scale->y / 2,
+        transform->scale->x * scale->x,
+        transform->scale->y * scale->y);
 }
