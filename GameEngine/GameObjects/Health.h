@@ -1,7 +1,8 @@
 #pragma once
 #include "Component.h"
+#include "../Events/Subject.h"
 
-class Health : public Component
+class Health : public Component, public Subject
 {
     int currentHealth;
 public:

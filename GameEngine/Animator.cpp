@@ -1,6 +1,5 @@
 #include "Animator.h"
-
-#include "GameObjects/ObjectRenderer.h"
+#include "GameObjects/Player.h"
 #include "GameObjects/Attack.h"
 
 Animator::Animator()
@@ -10,6 +9,13 @@ Animator::Animator()
     std::function<void(GameObject*)> enableAttack = [](GameObject* gameObject) { gameObject->GetComponent<Attack>()->EnablePunchHitBox(); };
     std::function<void(GameObject*)> disableAttack = [](GameObject* gameObject) { gameObject->GetComponent<Attack>()->DisablePunchHitBox(); };
     std::function<void(GameObject*)> endAttack = [](GameObject* gameObject) { gameObject->GetComponent<Attack>()->EndPunch(); };
+    
+    std::function<void(GameObject*)> lock = [](GameObject* gameObject) { gameObject->GetComponent<Player>()->locked = true; };
+    std::function<void(GameObject*)> startIdle = [](GameObject* gameObject)
+    {
+        gameObject->GetComponent<Player>()->locked = false;
+        gameObject->GetComponent<Animator>()->OnNotify(*gameObject, StartIdle);
+    };
     
     Animation* idleAnimation = new Animation {Idle, 1, 1, false, {Keyframe{0.0f, 0}}};
     
@@ -35,11 +41,11 @@ Animator::Animator()
         Keyframe(0.6f, 6, disableAttack),
         Keyframe(0.6f, 6, endAttack)}};
 
-    Animation* hurtAnimation = new Animation {Hurt, 4, 0.4f, true,
-    {Keyframe{0.0f, 0},
+    Animation* hurtAnimation = new Animation {Hurt, 4, 0.4f, false,
+    {Keyframe{0.0f, 0, lock},
     Keyframe{0.1f, 1},
     Keyframe{0.2f, 2},
-    Keyframe{0.3f, 3}}};
+    Keyframe{0.3f, 3, startIdle}}};
 
     animations[Idle] = idleAnimation;
     animations[Walk] = walkAnimation;
