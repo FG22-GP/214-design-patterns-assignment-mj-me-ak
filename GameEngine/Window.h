@@ -22,7 +22,7 @@ public:
 	void clear();
 	void present();
 
-	void CopyTextureToRenderer(SDL_Texture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect);
+	void CopyTextureToRenderer(SDL_Texture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 	SDL_Texture* GetTextureFromPath(const char* path);
 	SDL_Texture* GetTextureFromSurface(SDL_Surface* surface);

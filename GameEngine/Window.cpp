@@ -58,9 +58,9 @@ void Window::present()
 	SDL_RenderPresent(renderer);
 }
 
-void Window::CopyTextureToRenderer(SDL_Texture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect)
+void Window::CopyTextureToRenderer(SDL_Texture* texture, SDL_Rect* srcRect, SDL_Rect* dstRect, SDL_RendererFlip flip)
 {
-	SDL_RenderCopy(renderer, texture, srcRect, dstRect);
+	SDL_RenderCopyEx(renderer, texture, srcRect, dstRect, 0, NULL, flip);
 }
 
 SDL_Texture* Window::GetTextureFromPath(const char* path)
