@@ -25,6 +25,7 @@ void Player::Start()
     Notify(*gameObject, StartIdle);
 
     collider = gameObject->GetComponent<Collider>();
+    health = gameObject->GetComponent<Health>();
 }
 
 void Player::FixedUpdate()
@@ -85,7 +86,7 @@ void Player::Punch()
     Bounds punchBound = GetPunchBounds();
     if(other->collider->CollidesWith(punchBound))
     {
-        printf("HIT, lost health");
+        other->health->ChangeHealth(-5);
     }
 }
 

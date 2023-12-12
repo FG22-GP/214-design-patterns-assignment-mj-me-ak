@@ -1,5 +1,6 @@
 #pragma once
 #include "Collider.h"
+#include "Health.h"
 #include "Component.h"
 #include "../Events/Subject.h"
 
@@ -9,8 +10,9 @@ class Player : public Component, Subject
     float speedMultiplier = 1;
     bool isMoving;
     bool isCrouching;
-
+    
     Collider* collider;
+    Health* health;
     
     Bounds GetPunchBounds();
 public:
