@@ -7,5 +7,9 @@ enum AnimationName
     Crouch,
     Punch,
     Hurt,
-    Death
+    Death,
+    Jump,
+    Fall,
+    AirAttack,
+    CrouchAttack
 };

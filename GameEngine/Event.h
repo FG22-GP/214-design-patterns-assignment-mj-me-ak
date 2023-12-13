@@ -7,5 +7,9 @@ enum Event
     StartCrouch,
     StartPunch,
     StartHurt,
-    StartDeath
+    StartDeath,
+    StartJump,
+    StartFall,
+    StartAirAttack,
+    StartCrouchAttack
 };
