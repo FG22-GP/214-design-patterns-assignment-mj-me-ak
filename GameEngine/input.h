@@ -44,7 +44,8 @@ class Jump : public Command
 {
     void execute(GameObject* gameObject)
     {
-        
+        auto player = gameObject->GetComponent<Player>();
+        player->Jump();
     }
 };
 

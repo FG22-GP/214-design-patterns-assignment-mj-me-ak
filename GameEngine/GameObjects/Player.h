@@ -11,6 +11,9 @@ class Player : public Component, Subject
     float speedMultiplier = 1;
     bool isMoving;
     bool isCrouching;
+    bool isJumping;
+
+    float currentTimeInAir;
     
 public:
     Player* other;
@@ -20,6 +23,8 @@ public:
 
     bool locked;
     float moveSpeed = 0.1f;
+    float jumpDuration = 0.8f;
+    float jumpHeight = 3.3f;
     bool isLeftOfOther;
 
     
@@ -28,4 +33,5 @@ public:
     
     void Move(float direction);
     void Crouch(bool isCrouching);
+    void Jump();
 };

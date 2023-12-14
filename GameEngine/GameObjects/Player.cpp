@@ -9,6 +9,7 @@
 #include "ObjectRenderer.h"
 #include "Transform.h"
 #include "../Animator.h"
+#include "../Math/Math.h"
 
 class Animator;
 
@@ -53,6 +54,24 @@ void Player::FixedUpdate()
 
     if(isMoving && !locked)
         transform->position->x += (horizontalSpeed * speedMultiplier) * moveSpeed;
+
+    if(isJumping)
+    {
+        currentTimeInAir += 0.016f;
+
+        float t = std::sin(currentTimeInAir * (PI / jumpDuration));
+        transform->position->y = -6.f + (currentTimeInAir < jumpDuration / 2.f ? t : Math::EaseInSin(t)) * jumpHeight;
+
+        if(currentTimeInAir >= jumpDuration)
+        {
+            currentTimeInAir = 0.f;
+            isJumping = false;
+            transform->position->y = -6.f;
+            speedMultiplier = 1.f;
+
+            Move(0);
+        }
+    }
 }
 
 void Player::Move(float direction)
@@ -64,12 +83,13 @@ void Player::Move(float direction)
         return;
     }
     
-    if(direction == -1 && horizontalSpeed == 1)
+    if(direction < 0 && horizontalSpeed > 0)
         horizontalSpeed = 0;
     
     float towards = direction - horizontalSpeed;
     towards = std::clamp(towards, -1.f, 1.f);
-    horizontalSpeed += towards;
+    if(!isJumping)
+        horizontalSpeed += towards;
 
     if (std::abs(horizontalSpeed) < 0.1f && isMoving)
     {
@@ -90,7 +110,7 @@ void Player::Move(float direction)
 
 void Player::Crouch(bool isCrouching)
 {
-    if(locked)
+    if(locked || isJumping)
         return;
     
     this->isCrouching = isCrouching;
@@ -104,5 +124,14 @@ void Player::Crouch(bool isCrouching)
         speedMultiplier = 1;
         Notify(*gameObject, isMoving ? StartWalk : StartIdle);
     }
+}
+
+void Player::Jump()
+{
+    if(isJumping)
+        return;
+
+    isJumping = true;
+    speedMultiplier = 0.9f;
 }
 
