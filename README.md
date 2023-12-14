@@ -34,17 +34,28 @@ A local-mutltiplayer fighting game with support for animated spritesheets.
 
 ### Component
 - What does it do?
+  - All GameObject/Actors/Entities are a list of Components
 - Why was it chosen?
+  - Decoupling an Object’s functionality into several component
 - How was it implemented?
+  - A Component [base class](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/blob/main/GameEngine/GameObjects/Component.h) with virtual Start, Update and End methods
+  - A GameObject class that contains a [list](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/blob/435a3a83a9f39ec71551b3eba95e8b538395aeff/GameEngine/GameObjects/GameObject.h#L20) of Components
+  - The Player is a GameObject that has a PlayerMovement, Attack, Health, Collider and an Animator Component
 
 ### Game Loop and Update Method
 - What does it do?
+  - Simulate a collection of independent objects frame by frame
 - Why was it chosen?
+  - Works very well with the Component Pattern
 - How was it implemented?
+  - The Game Loop processes each frame of the game
+  - First the collection of GameObjects get [updated](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/blob/435a3a83a9f39ec71551b3eba95e8b538395aeff/GameEngine/game.cpp#L53C3-L53C3) each frame and each fixed-timestep ( 60 fps )
+  - [Rendering](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/blob/435a3a83a9f39ec71551b3eba95e8b538395aeff/GameEngine/game.cpp#L66C4-L66C4) of each GameObject happens afterwards
 
-### Media
+## Media
 
-https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/assets/57400375/d48cd56b-08f0-493f-b9c6-f2fdca1d6157
+**Video**: https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/assets/57400375/210eaab5-fae1-4b93-b5ce-cc8ed8b0d89e
+</br></br>
 ![Screenshot 2023-12-14 134445](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/assets/57400375/c8d58702-0502-4c91-bc66-4e262f2c7a7a)
 ![Screenshot 2023-12-14 134643](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/assets/57400375/9f6dbc71-ad83-4c3c-98f2-57fb0dfa23b9)
 
