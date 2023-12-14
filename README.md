@@ -12,9 +12,27 @@ A local-mutltiplayer fighting game with support for animated spritesheets.
 - [Update Method](#game-loop-and-update-method)
 
 ### Command
+- What does it do?
+  - Input Handling
+- Why was it chosen?
+  - Easy to have [different](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/blob/0623047e16334e978ed0fc57f429e04cea68318e/GameEngine/GameObjects/CommandManager.cpp#L12) input-schemes for the players
+  - Easy to add more inputs with more Commands
+- How was it implemented?
+  - [Base Command](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/blob/0623047e16334e978ed0fc57f429e04cea68318e/GameEngine/input.h#L13) class with a virtual Execute method
+  - InputHandler instance which [returns](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/blob/0623047e16334e978ed0fc57f429e04cea68318e/GameEngine/input.cpp#L39) a list of Commands
+  - CommandManager [executes](https://github.com/FG22-GP/214-design-patterns-assignment-mj-me-ak/blob/0623047e16334e978ed0fc57f429e04cea68318e/GameEngine/GameObjects/CommandManager.cpp#L20) the list Commands on the players
 
 ### Observer
+- What does it do?
+- Why was it chosen?
+- How was it implemented?
 
 ### Component
+- What does it do?
+- Why was it chosen?
+- How was it implemented?
 
 ### Game Loop and Update Method
+- What does it do?
+- Why was it chosen?
+- How was it implemented?
