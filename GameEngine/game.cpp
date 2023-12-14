@@ -45,12 +45,8 @@ int main(int argc, char* args[])
 		//check for exit input
 		while (SDL_PollEvent(&e))
 		{
-			switch (e.type)
-			{
-				case SDL_QUIT:				
-					quit = true;
-					break;
-			}
+			if(e.type == SDL_QUIT)
+				quit = true;
 		}
 
 		// update game logic
@@ -62,13 +58,14 @@ int main(int argc, char* args[])
 
 		gameLogic.Update(static_cast<float>(elapsed) / 1000.f);
 
-
 		// render
 		window.clear();
+		
 		for (auto gameObject : GameLogic::GameObjects)
 		{
 			gameObject->objectRenderer->Render(&window);
 		}
+		
 		window.present();
 	}
 	gameLogic.End();

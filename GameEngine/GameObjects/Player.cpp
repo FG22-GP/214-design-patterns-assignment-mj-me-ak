@@ -30,7 +30,7 @@ void Player::Start()
     attack = gameObject->AddComponent<Attack>();
     attack->player = this;
 
-    collider->debugLines = true;
+    //collider->debugLines = true;
 
     collider->scale->x = 0.3f;
     collider->scale->y = 0.7f;    
