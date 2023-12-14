@@ -57,20 +57,39 @@ void Player::FixedUpdate()
 
     if(isJumping)
     {
-        currentTimeInAir += 0.016f;
+        UpdateJump();
+    }
+}
 
-        float t = std::sin(currentTimeInAir * (PI / jumpDuration));
-        transform->position->y = -6.f + (currentTimeInAir < jumpDuration / 2.f ? t : Math::EaseInSin(t)) * jumpHeight;
+void Player::UpdateJump()
+{
+    currentTimeInAir += 0.016f;
 
-        if(currentTimeInAir >= jumpDuration)
+    float t = std::sin(currentTimeInAir * (PI / jumpDuration));
+    if (currentTimeInAir < jumpDuration / 2.f)
+    {
+        transform->position->y = -6.f + t * jumpHeight;
+    }
+    else
+    {
+        if (!isFalling)
         {
-            currentTimeInAir = 0.f;
-            isJumping = false;
-            transform->position->y = -6.f;
-            speedMultiplier = 1.f;
-
-            Move(0);
+            isFalling = true;
+            Notify(*gameObject, Event::StartFall);
         }
+        transform->position->y = -6.f + Math::EaseInSin(t) * jumpHeight;
+    }
+
+    if(currentTimeInAir >= jumpDuration)
+    {
+        currentTimeInAir = 0.f;
+        isJumping = false;
+        isFalling = false;
+        transform->position->y = -6.f;
+        speedMultiplier = 1.f;
+
+        Move(0);
+        Notify(*gameObject, Event::StartIdle);
     }
 }
 
@@ -133,5 +152,6 @@ void Player::Jump()
 
     isJumping = true;
     speedMultiplier = 0.9f;
+    Notify(*gameObject, Event::StartJump);
 }
 

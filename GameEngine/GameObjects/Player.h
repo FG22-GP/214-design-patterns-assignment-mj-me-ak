@@ -11,9 +11,12 @@ class Player : public Component, Subject
     float speedMultiplier = 1;
     bool isMoving;
     bool isCrouching;
+    bool isFalling;
     bool isJumping;
 
     float currentTimeInAir;
+
+    void UpdateJump();
     
 public:
     Player* other;
