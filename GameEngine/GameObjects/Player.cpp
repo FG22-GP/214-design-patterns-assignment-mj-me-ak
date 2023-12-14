@@ -101,14 +101,16 @@ void Player::Move(float direction)
         isMoving = false;
         return;
     }
+
+    if(isJumping) return;
     
     if(direction < 0 && horizontalSpeed > 0)
         horizontalSpeed = 0;
     
     float towards = direction - horizontalSpeed;
     towards = std::clamp(towards, -1.f, 1.f);
-    if(!isJumping)
-        horizontalSpeed += towards;
+    
+    horizontalSpeed += towards;
 
     if (std::abs(horizontalSpeed) < 0.1f && isMoving)
     {
@@ -130,7 +132,10 @@ void Player::Move(float direction)
 void Player::Crouch(bool isCrouching)
 {
     if(locked || isJumping)
+    {
+        this->isCrouching = false;
         return;
+    }
     
     this->isCrouching = isCrouching;
     if (isCrouching)
@@ -147,9 +152,9 @@ void Player::Crouch(bool isCrouching)
 
 void Player::Jump()
 {
-    if(isJumping)
+    if(locked || isJumping)
         return;
-
+    
     isJumping = true;
     speedMultiplier = 0.9f;
     Notify(*gameObject, Event::StartJump);
