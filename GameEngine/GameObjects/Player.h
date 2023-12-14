@@ -9,6 +9,7 @@ class Player : public Component, Subject
 {
     float horizontalSpeed = 0;
     float speedMultiplier = 1;
+    float jumpSpeedMultiplier = 1;
     bool isMoving;
     bool isCrouching;
     bool isFalling;
@@ -37,4 +38,6 @@ public:
     void Move(float direction);
     void Crouch(bool isCrouching);
     void Jump();
+    void PauseJump();
+    void ResumeJump();
 };

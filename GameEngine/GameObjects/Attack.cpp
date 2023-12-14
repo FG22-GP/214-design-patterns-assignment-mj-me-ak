@@ -28,7 +28,8 @@ void Attack::Update(float deltaTime)
 void Attack::StartPunch()
 {
     if(punchStarted || player->locked) return;
-    
+
+    player->PauseJump();
     player->locked = true;
     punchStarted = true;
     Notify(*gameObject, Event::StartPunch);
@@ -54,6 +55,8 @@ void Attack::EndPunch()
 
     player->locked = false;
     Notify(*gameObject, Event::StartIdle);
+
+    player->ResumeJump();
 }
 
 Bounds Attack::GetPunchBounds()

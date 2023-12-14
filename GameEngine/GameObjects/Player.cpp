@@ -63,7 +63,7 @@ void Player::FixedUpdate()
 
 void Player::UpdateJump()
 {
-    currentTimeInAir += 0.016f;
+    currentTimeInAir += 0.016f * jumpSpeedMultiplier;
 
     float t = std::sin(currentTimeInAir * (PI / jumpDuration));
     if (currentTimeInAir < jumpDuration / 2.f)
@@ -153,5 +153,25 @@ void Player::Jump()
     isJumping = true;
     speedMultiplier = 0.9f;
     Notify(*gameObject, Event::StartJump);
+}
+
+void Player::PauseJump()
+{
+    if(!isJumping)
+        return;
+    
+    jumpSpeedMultiplier = 0.f;
+}
+
+void Player::ResumeJump()
+{
+    if(!isJumping)
+        return;
+    
+    jumpSpeedMultiplier = 1.f;
+    if(currentTimeInAir < jumpDuration / 2.f)
+    {
+        currentTimeInAir = jumpDuration - currentTimeInAir;
+    }
 }
 
