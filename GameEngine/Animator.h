@@ -13,7 +13,7 @@ private:
     
 public:
     Animator();
-    ~Animator();
+    ~Animator() override;
     Animation* currentAnimation;
     void OnNotify(const GameObject& gameObject, Event event) override;
     void Update(float deltaTime) override;
