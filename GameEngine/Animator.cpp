@@ -1,4 +1,5 @@
 #include "Animator.h"
+#include<iostream>
 #include "GameObjects/Player.h"
 #include "GameObjects/Attack.h"
 
@@ -133,6 +134,22 @@ Animator::Animator()
     animations[Fall] = fallAnimation;
     animations[AirAttack] = airAttackAnimation;
     animations[CrouchAttack] = crouchAttackAnimation;
+}
+
+Animator::~Animator()
+{
+    std::map<AnimationName, Animation>::iterator it;
+
+    for (auto const& animation : animations)
+    {
+        std::cout << animation.first  // AnimationName key
+                  << ':' 
+                  << animation.second // Value (type of Animation) 
+                  << std::endl;
+
+        delete animation.second;
+    }
+    animations.clear();
 }
 
 void Animator::OnNotify(const GameObject& gameObject, Event event)
